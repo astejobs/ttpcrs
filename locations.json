@@ -1,0 +1,15 @@
+{
+    “locations”:[
+        {
+            “name”:Pasir Panjang Wholesale Centre,
+            “address”:7058,
+            “timing”:”java”
+        },
+        {
+            “name”:”Sravan”,
+            “address”:7058,
+            “timing”:”java”
+        }
+        
+    ]
+}
