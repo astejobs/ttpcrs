@@ -81,6 +81,8 @@
 
             <li><a href="login.php?logout=true">Logout</a></li>
 
+          <?php } else { ?>
+            <li><a href="login.php">Login</a></li>
           <?php } ?>
         </ul>
       </nav><!-- .main-nav-->
