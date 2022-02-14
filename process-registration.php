@@ -91,6 +91,7 @@ if(isset($_GET['edit'])){
   .float-right {
     float:right;
   }
+  
   @media print{
     .lbl {
       width:189px;
