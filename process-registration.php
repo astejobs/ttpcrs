@@ -71,6 +71,9 @@ if(isset($_GET['edit'])){
                     $testTime,$paymentMode,$paymentRefNo,$staffCode,$testLocation,$ariSymptomps,$contraindication);
     if($stmt->execute()) {
       echo "Record Inserted Successfully";
+    } else {
+      echo "Record not Inserted";
+      echo $stmt->error;
     }
     //print_r($_POST);
     $stmt->close();    
