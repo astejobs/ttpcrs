@@ -56,7 +56,7 @@
 
           <li class="drop-down m1" label="Contact"><a href="">Query</a>  
             <ul>
-              <li><a href="contact.php">Search Dbase</a></li>           
+              <li><a href="registrations.php">Search Dbase</a></li>           
             </ul>
           </li>   
 

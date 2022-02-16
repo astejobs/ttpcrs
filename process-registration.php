@@ -34,7 +34,7 @@ if(isset($_GET['edit'])){
      
   }
   
-} else {  //Add New Blog 
+} else {  //Add New Registration 
 
   if(isset($_POST['submit'])){
   
@@ -91,7 +91,7 @@ if(isset($_GET['edit'])){
   .float-right {
     float:right;
   }
-  
+
   @media print{
     .lbl {
       width:189px;
