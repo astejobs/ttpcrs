@@ -1,4 +1,11 @@
 <?php 
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
+/*** THIS! ***/
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+/*** ^^^^^ ***/
+
 require_once('connection.php');
 //Update Existing News Blog 
 if(isset($_GET['edit'])){
