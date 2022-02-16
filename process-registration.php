@@ -72,6 +72,7 @@ if(isset($_GET['edit'])){
     if($stmt->execute()) {
       echo "Record Inserted Successfully";
     } else {
+      echo $stmt->errorInfo;
       echo "Record not Inserted";
       echo $stmt->error;
     }
