@@ -1,4 +1,5 @@
 <?php 
+session_start();
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
@@ -78,6 +79,8 @@ if(isset($_GET['edit'])){
                     $testTime,$paymentMode,$paymentRefNo,$staffCode,$testLocation,$ariSymptomps,$contraindication);
     if($stmt->execute()) {
       echo "Record Inserted Successfully";
+      $_SESSION['msg']="Registration Submitted successfully"; 
+      header('location:index.php');
     } else {
       echo $stmt->errorInfo;
       echo "Record not Inserted";

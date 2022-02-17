@@ -9,10 +9,23 @@
  <section class="main mt-5">
   <div class="container mt-5">
         <div class="row">
-            <div class="col-md-12">
-        <form class="row g-3" action="process-registration.php" method="post">
-            <h1 class="title"> PCR Test Online Registration Form</h1>
+        <div class="col-md-12">
+        <form class="row" action="process-registration.php" method="post" id="form">
+            <div class="text-center">
+                <h4 class="text-center mx-auto"> PCR Test Online Registration Form</h4>
+            </div>
+            
             <div class="col-md-12 form-group">
+                <div class="col-sm-12">
+                    <?php
+                        if(isset($_SESSION['msg'])) 
+                        { 
+                            echo "<div class='alert alert-success'><strong>".$_SESSION['msg']."</strong> !";
+                            echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
+                </div>
 
                 <label for="Patient Name" class="form-label"> <b>Patient Name </b><span class="text-danger">*</span> </label>
                 <input type="text" class="form-control" name="patientName" placeholder="Patient Name" required />
@@ -157,23 +170,43 @@
             <div class="col-md-12 form-group">
                 <P><b> Have you asked if patient has any ARI symptoms?*</b></P>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="ariSymptomps" required>
+                    <input class="form-check-input" type="checkbox" name="ariSymptomps" id="defaultCheck1" required>
                     <label class="form-check-label" for="defaultCheck1">
                         YES, I have asked and patient has declared no ARI symptoms
                     </label>
                 </div> &nbsp;
                 <P><b> Have you checked if patient has any contraindication?* </b></P>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="contraindication" required>
-                    <label class="form-check-label" for="defaultCheck1">
-                        YES,I have asked and patient has stated no contraindication
+                    <input class="form-check-input" type="checkbox" name="contraindication" id="defaultCheck2" required>
+                    <label class="form-check-label" for="defaultCheck2">
+                        YES, I have asked and patient has stated no contraindication
                     </label>
                 </div>
             </div>
 
             <div class="col-md-12 text-center">
-                <input type="Submit" name="submit" class="btn btn-warning" value="Submit" />
+                <button type="button" class="btn btn-info px-5" name="register">Submit</button>
             </div>
+
+            <!-- Confirm Modal -->
+            <div id="confirm" class="modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="text-center">
+                                CONFIRM TO PROCEED <br><br>
+                                ALL REQUIRED INFORMATION<br>
+                                COLLECTED ARE CORRECT
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" name="submit" class="btn btn-info" id="submit">Confirm</button>
+                            <button type="button" data-dismiss="modal" class="btn" id="cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Confirm Modal -->
         </form>
     </div>
 </div>
@@ -186,10 +219,14 @@
 
 
   </main><!-- End #main -->
+
+
+
   <?php
     require_once('footer.php');
   ?>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
   <script>
     $(document).ready(function() {
 
@@ -208,6 +245,24 @@
       }
       $(".dobpicker").flatpickr(optional_config);
       $(".timepicker").flatpickr(time_config);
+
+    
+    $('button[name="register"]').on('click', function(e) {           
+       
+        $('#confirm').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#submit").on('click', function(e) {
+                console.log("Submitting");
+                $('#confirm').modal('hide');
+                return true;
+            });
+            $("#cancel").on('click', function(e){
+                console.log("Cancelling");
+                e.preventDefault();                
+            });
+        });
 
     });
 
