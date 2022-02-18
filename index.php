@@ -84,7 +84,7 @@
             <div class="col-md-6 form-group">
                 <label for="Phone" class="control-label"> <b>Contact Number </b><span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="contactNumber" placeholder="" data-error="Enter Your Phone Number"
-                    required>
+                    required pattern="\+?\d[\d -]{8,12}\d">
                 <small >(with 3 digit country code. SG = 065)</small>
             </div>
             <div class="col-md-12 form-group">
