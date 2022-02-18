@@ -82,7 +82,7 @@ if(isset($_GET['id'])) {
                           </tr>
                           <tr>
                             <td><?php echo $row['patientName'] ?></td>
-                            <td class="float-right"><?php echo $row['nric_fin_number'] ?></td>
+                            <td class="float-right"><?php echo $row['passportNumber'] ?></td>
                           </tr>
                           <tr>
                             <td> DOB: 
@@ -91,11 +91,11 @@ if(isset($_GET['id'])) {
                                   echo date_format($tdate,"d/m/Y");
                                 ?>
                             </td>
-                            <td class="float-right"><?php echo $row['passportNumber'] ?></td>
+                            <td class="float-right"><?php echo $row['nric_fin_number'] ?></td>                           
                           </tr>
                           <tr>
                             <td><?php echo $row['nationality'] ?></td>
-                            <td class="float-right"><?php echo $row['testType']."  ".$row['specimenType']?></td>
+                            <td class="float-right"><?php echo $row['testType']." &emsp; ".$row['specimenType']?></td>
                           </tr>
                           <tr>
                             <td colspan="2"><?php echo $row['clinicName'] ?></td>
@@ -108,7 +108,15 @@ if(isset($_GET['id'])) {
                             <td class="float-right"><?php echo $row['testLocation'] ?></td>
                           </tr>
                           <tr>
-                            <td style="text-align:center" colspan="2"><img alt="testing" src="barcode.php?text=<?php echo $row['nric_fin_number'] ?>&size=13&print=true" /></td>
+                            <td style="text-align:center" colspan="2">
+                                <?php
+                                  if( !empty($row['nric_fin_number']) ) {                                    
+                                    ?><img alt="testing" src="barcode.php?text=<?php echo $row['nric_fin_number'] ?>&size=13&print=true" /> <?php
+                                  } else {
+                                    ?><img alt="testing" src="barcode.php?text=<?php echo $row['passportNumber'] ?>&size=13&print=true" /> <?php
+                                  }
+                                ?>
+                          </td>
                           </tr>
                         </table>
                       </div>

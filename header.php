@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>TheTestingPro &#9867; (TTP)</title>
+  <title>Client Registration System &#9867; (CRS)</title>
   <meta content="The Testing Pro, makes covid-19 testing easy for you" name="descriptison">
   <meta content="The Testing Pro, Covid-19 test, coronavirus, corona tests, easy testing" name="keywords">
 
@@ -50,7 +50,7 @@
           
           <li class="drop-down m1" label="Contact"><a href="">Reports</a>  
             <ul>
-              <li><a href="contact.php">Past Attendance</a></li>           
+              <li><a href="dummy.php">Past Attendance</a></li>           
             </ul>
           </li>   
 
@@ -65,7 +65,7 @@
             <?php if( $_SESSION['ROLE']=='ADMIN' || $_SESSION['ROLE']=='MANAGER') { ?>            
               <li class="drop-down m1" label="Contact"><a href="">Admin</a>  
                 <ul>
-                  <li><a href="contact.php">Edit/Delete Entries</a></li>           
+                  <li><a href="dummy.php">Edit/Delete Entries</a></li>           
                 </ul>
               </li> 
             <?php } ?>
@@ -73,8 +73,8 @@
             <?php if($_SESSION['ROLE']=='ADMIN') { ?>
               <li class="drop-down m1" label="Contact"><a href="">Account</a>  
                 <ul>
-                  <li><a href="contact.php">Add/Delete Accounts</a></li> 
-                  <li><a href="contact.php">Edit/Delete Entries</a></li>           
+                  <li><a href="dummy.php">Add/Delete Accounts</a></li> 
+                  <li><a href="dummy.php">Edit/Delete Entries</a></li>           
                 </ul>
               </li>             
             <?php } ?>

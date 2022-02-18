@@ -230,11 +230,13 @@
     $(document).ready(function() {
 
       optional_config_dob = {
+          maxDate: new Date().setFullYear( new Date().getFullYear() - 1 ),
           dateFormat: "Y-m-d",
           altFormat: "d-m-Y",
           altInput: true,
       }
       optional_config_td = {
+          maxDate: "today",
           dateFormat: "Y-m-d",
           altFormat: "d-m-Y",
           altInput: true,
