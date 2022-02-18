@@ -67,15 +67,30 @@ if(isset($_GET['id'])) {
                         </style>
                       <table class="table-sm table-borderless lbl table-light" id="labelToPrint1">
                           <tr>
-                            <td><?php echo $row['testDate'] ?></td>
-                            <td class="float-right"><?php echo $row['testTime'] ?></td>
+                            <td>
+                                <?php
+                                  $tdate=date_create($row['testDate']);
+                                  echo date_format($tdate,"d/m/Y");
+                                ?>
+                            </td>
+                            <td class="float-right">
+                                <?php
+                                  $ttime=date_create($row['testTime']);
+                                  echo date_format($ttime,"h:i A");
+                                ?>
+                            </td>
                           </tr>
                           <tr>
                             <td><?php echo $row['patientName'] ?></td>
                             <td class="float-right"><?php echo $row['nric_fin_number'] ?></td>
                           </tr>
                           <tr>
-                            <td>DOB: <?php echo $row['dob'] ?></td>
+                            <td> DOB: 
+                                <?php
+                                  $tdate=date_create($row['dob']);
+                                  echo date_format($tdate,"d/m/Y");
+                                ?>
+                            </td>
                             <td class="float-right"><?php echo $row['passportNumber'] ?></td>
                           </tr>
                           <tr>

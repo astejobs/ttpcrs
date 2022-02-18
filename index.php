@@ -35,7 +35,7 @@
             <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>D.O.B </b><span class="text-danger">*</span> </label>
                 <div class="input-wrapper">
-                    <input type="text" placeholder="DD/MM/YYYY" class="form-control dobpicker" data-input  name="dobDate" required />
+                    <input type="text" placeholder="DD/MM/YYYY" class="form-control" name="dobDate" id="dob_date" required />
                          
                    <!--  <span class="emf-sep">/</span>
                     <input class="js-form-day" id="dob_day" type="text" name="dobDay" size="2">
@@ -129,10 +129,10 @@
               </div>
               <div class="row">
                   <div class="col-sm-6 form-group">                    
-                    <input class="form-control dobpicker"  id="test_date"type="text" name="testDate" placeholder="DD/MM/YYYY" required>
+                    <input class="form-control"  id="test_date"type="text" name="testDate" placeholder="DD/MM/YYYY" required>
                   </div>
                   <div class="col-sm-6 form-group">                    
-                    <input class="form-control timepicker"  id="test_date"type="text" name="testTime" placeholder="HH:MM AM/PM" required>
+                    <input class="form-control timepicker"  id="test_date" type="text" name="testTime" placeholder="HH:MM AM/PM" required>
                   </div>
               </div>
             </div>
@@ -226,24 +226,34 @@
     require_once('footer.php');
   ?>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
   <script>
     $(document).ready(function() {
 
-      optional_config = {
-          enableTime: true,
+      optional_config_dob = {
           dateFormat: "Y-m-d",
-          onChange: function(selectedDates, dateStr, instance) {
-            console.log(selectedDates);
-            //setDob(selectedDates[0]);
-          }
+          altFormat: "d-m-Y",
+          altInput: true,
       }
+      optional_config_td = {
+          dateFormat: "Y-m-d",
+          altFormat: "d-m-Y",
+          altInput: true,
+          defaultDate: "today",
+      }
+
+      const d = new Date();
+      let minutes = d.getMinutes();
+      let hour = d.getHours();
       time_config = {
         enableTime: true,
         noCalendar: true,
         dateFormat: "H:i",
+        altFormat: "h:i K",
+        altInput: true,
+        defaultDate: new Date(),
       }
-      $(".dobpicker").flatpickr(optional_config);
+      $("#dob_date").flatpickr(optional_config_dob);
+      $("#test_date").flatpickr(optional_config_td);
       $(".timepicker").flatpickr(time_config);
 
     
