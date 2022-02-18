@@ -57,13 +57,28 @@
                                     <tr>
                                         <td><?php echo $idx ?></td>
                                         <td><?php echo $row["patientName"] ?></td>
-                                        <td><?php echo $row["dob"] ?></td>
+                                        <td>
+                                            <?php
+                                                $tdate=date_create($row['dob']);
+                                                echo date_format($tdate,"d/m/Y");
+                                            ?>
+                                        </td>
                                         <td><?php echo $row["gender"] ?></td>
                                         <td><?php echo $row["passportNumber"] ?></td>
                                         <td><?php echo $row["nric_fin_number"] ?></td>
                                         <td><?php echo $row["testType"] ?></td>
-                                        <td><?php echo $row["testDate"] ?></td>
-                                        <td><?php echo $row["testTime"] ?></td>
+                                        <td>
+                                            <?php
+                                                $tdate=date_create($row['testDate']);
+                                                echo date_format($tdate,"d/m/Y");
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <?php
+                                                $tdate=date_create($row['testTime']);
+                                                echo date_format($tdate,"h:i A");
+                                            ?>
+                                        </td>
                                         <td>
                                                 <a href="print-label.php?id=<?php echo $row["id"]; ?>" data-toggle="tooltip" title="Print Label"><i class="fa fa-clipboard" style="color:#1bb1dc"></i></a>
                                                 <a href="edit-blog.php?id=<?php echo $row["id"]; ?>" data-toggle="tooltip" title="Edit News"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>

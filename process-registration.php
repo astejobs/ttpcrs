@@ -78,9 +78,9 @@ if(isset($_GET['edit'])){
                       $contactNumber,$email,$testType,$specimenType,$clinicName,$performing_mcr,$testDate,
                     $testTime,$paymentMode,$paymentRefNo,$staffCode,$testLocation,$ariSymptomps,$contraindication);
     if($stmt->execute()) {
-      echo "Record Inserted Successfully";
+      $last_id = $conn->insert_id;
       $_SESSION['msg']="Registration Submitted successfully"; 
-      header('location:index.php');
+      header('location:print-label.php?id='.$last_id);
     } else {
       echo $stmt->errorInfo;
       echo "Record not Inserted";
