@@ -125,9 +125,13 @@ require_once('footer.php');
                     return moment(tt).format('LT');
                 } },
                 { data: function ( row, type, set ) {
-                    return `<a href="print-label.php?id=${row.id}" data-toggle="tooltip" title="Print Label"><i class="fa fa-clipboard" style="color:#1bb1dc"></i></a>`+
-                         `<a href="edit-registration.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
-                         `<a style="cursor:pointer" class="remove"  id="${row.id}" data-toggle="tooltip" title="Delete"><i class="fa fa-trash" style="color:#1bb1dc"></i></a>`;
+                    <?php if(isset($_SESSION['ID'])) { ?>
+                        return `<a href="print-label.php?id=${row.id}" data-toggle="tooltip" title="Print Label"><i class="fa fa-clipboard" style="color:#1bb1dc"></i></a>`+
+                            `<a href="edit-registration.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
+                            `<a style="cursor:pointer" class="remove"  id="${row.id}" data-toggle="tooltip" title="Delete"><i class="fa fa-trash" style="color:#1bb1dc"></i></a>`;
+                    <?php } else {?>
+                        return "";
+                    <?php } ?>
                     
                 } },
             ]
