@@ -98,7 +98,7 @@ $writer = new Xlsx($spreadsheet);
     
     $writer = new Xlsx($spreadsheet);
     HEADER("Content-Type: application/vnd.ms-excel");
-    HEADER("Content-Disposition: attachment; filename=MDT_DB_$now_date.$file_ending");
+    HEADER("Content-Disposition: attachment; filename=CRS_REG_$now_date.$file_ending");
     $writer->save('php://output');
 }
 ?>
