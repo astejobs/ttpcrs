@@ -59,10 +59,15 @@
                         </tr>
                     </thead>
                    
-                        </table>
-                        
-                </div>                              
-         
+            </table>
+        </div>                              
+        <div class="form-group float-right mt-3">
+            <?php if(isset($_SESSION['ID'])) { ?>
+                <form action="generate-excel.php" method="POST">
+                    <button type="submit" id="export" class="btn btn-dark px-5" name="export-to-excel">Export All</button>
+                </form>
+            <?php } ?>
+        </div>     
     </div>
    </main>
    
@@ -149,7 +154,7 @@ require_once('footer.php');
             var parent = $(this).parent().parent();
             console.log("Delete ID: "+id);
 
-            if(confirm('Are you sure to remove this blog ?'))
+            if(confirm('Are you sure to remove this registration ?'))
             {
                 $.ajax({
                     url: 'delete_record.php',
