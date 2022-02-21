@@ -7,6 +7,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Border;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 if(isset($_POST["export-to-excel"]))
 {
 
@@ -57,7 +58,8 @@ if(isset($_POST["export-to-excel"]))
         ),
         'font' => array(
             'bold' => true,
-            'color' => array('argb' => 'ffffff')
+            'color' => array('argb' => 'ffffff'),
+            'size' => 12
         )
     );
 
@@ -66,6 +68,10 @@ if(isset($_POST["export-to-excel"]))
 
     //set first row bold
     $sheet->getStyle('A1:' . $highestColumn . '1' )->applyFromArray($styleArray);
+    $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(24);    
+    foreach (range('A',$highestColumn) as $col) {
+        $sheet->getColumnDimension($col)->setAutoSize(true);
+    }
   
 $writer = new Xlsx($spreadsheet);
     $rowCount = 2;
