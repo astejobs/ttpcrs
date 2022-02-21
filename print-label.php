@@ -42,6 +42,16 @@ if(isset($_GET['id'])) {
             ?>
                 <div class="container h-100" style="margin-top:150px;">
                   <div class="row">
+                  <div class="col-sm-12">
+                      <?php
+                          if(isset($_SESSION['msg'])) 
+                          { 
+                              echo "<div class='alert alert-success'><strong>".$_SESSION['msg']."</strong> !";
+                              echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
+                              unset($_SESSION['msg']);
+                          }
+                      ?>
+                  </div>
                     
                     <div class="col-sm-6">
                       <div class="" id="labelToPrint">

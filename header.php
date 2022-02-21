@@ -46,7 +46,7 @@
 
       <nav class="main-nav d-none d-lg-block">
         <ul>
-          <li class="m1" label="Home"><a href="index.php">Register</a></li>
+          <li class="m1" label="Home"><a href="register-form.php">Register</a></li>
           
           <li class="drop-down m1" label="Contact"><a href="">Reports</a>  
             <ul>
@@ -82,7 +82,7 @@
             <li><a href="login.php?logout=true">Logout</a></li>
 
           <?php } else { ?>
-            <li><a href="login.php">Login</a></li>
+            <!-- <li><a href="login.php">Login</a></li> -->
           <?php } ?>
         </ul>
       </nav><!-- .main-nav-->

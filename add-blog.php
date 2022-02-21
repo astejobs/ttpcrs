@@ -3,7 +3,7 @@
     require_once('connection.php');
     $activePage = "Blog";
     if(!isset($_SESSION['user'])) {
-      header('Location:./login.php');
+      header('location:login.php');
       exit;
     }
 ?>

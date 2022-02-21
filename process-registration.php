@@ -8,33 +8,62 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 /*** ^^^^^ ***/
 
 require_once('connection.php');
-//Update Existing News Blog 
-if(isset($_GET['edit'])){
+//Update Existing Record 
+if(isset($_GET['update'])){
 
   if(isset($_POST['id'])){ 
     $id = $_POST['id'];
-    $title = mysqli_real_escape_string($conn, $_POST['title']);
-    $content = mysqli_real_escape_string($conn, $_POST['content']);
-    $author_name = mysqli_real_escape_string($conn, $_POST['authorName']);
-    $date_posted = mysqli_real_escape_string($conn, $_POST['datePosted']);
-  
-    $tagTitles = $_POST['tagTitle'];
-    $tagLinks = $_POST['tagLink'];
+    $patientName = mysqli_real_escape_string($conn, $_POST['patientName']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $dobDate = mysqli_real_escape_string($conn, $_POST['dobDate']);
+    $passportNumber = mysqli_real_escape_string($conn, $_POST['passportNumber']);
+    $nric_fin_number = mysqli_real_escape_string($conn, $_POST['nric_fin_number']);
+    $nationality = mysqli_real_escape_string($conn, $_POST['nationality']);
+    $contactNumber = mysqli_real_escape_string($conn, $_POST['contactNumber']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $testType = mysqli_real_escape_string($conn, $_POST['testType']);
+    $specimenType = mysqli_real_escape_string($conn, $_POST['specimenType']);
+    $clinicName = mysqli_real_escape_string($conn, $_POST['clinicName']);
+    $performing_mcr = mysqli_real_escape_string($conn, $_POST['performing_mcr']);
+    $testDate = mysqli_real_escape_string($conn, $_POST['testDate']);
+    $testTime = mysqli_real_escape_string($conn, $_POST['testTime']);
+    $paymentMode = mysqli_real_escape_string($conn, $_POST['paymentMode']);
+    $paymentRefNo = mysqli_real_escape_string($conn, $_POST['paymentRefNo']);
+    $staffCode = mysqli_real_escape_string($conn, $_POST['staffCode']);
+    $testLocation = mysqli_real_escape_string($conn, $_POST['testLocation']);
+    $ariSymptomps = isset($_POST['ariSymptomps']) ? "1" : "0";
+    $contraindication = isset($_POST['contraindication']) ? "1" : "0";
     
-      $sql = "UPDATE blog SET author_name='".$author_name."', date_posted='".$date_posted."', title='".$title."', content='".$content."' WHERE id='".$id."'";
+      $sql = "UPDATE registrations SET patientName='".$patientName."', 
+                                       gender='".$gender."', 
+                                       dob='".$dobDate."', 
+                                       nric_fin_number='".$nric_fin_number."', 
+                                       nationality='".$nationality."', 
+                                       contactNumber='".$contactNumber."', 
+                                       testType='".$testType."', 
+                                       specimenType='".$specimenType."', 
+                                       clinicName='".$clinicName."', 
+                                       physician_mcr='".$performing_mcr."', 
+                                       testDate='".$testDate."', 
+                                       testTime='".$testTime."', 
+                                       paymentMode='".$paymentMode."', 
+                                       paymentRefNo='".$paymentRefNo."', 
+                                       staffCode='".$staffCode."', 
+                                       testLocation='".$testLocation."', 
+                                       ari_symptoms='".$ariSymptomps."', 
+                                       contraindication='".$contraindication."', 
+                                       passportNumber='".$passportNumber."' WHERE id='".$id."'";
       
       if ($conn->query($sql) === TRUE) {            
             echo "Blog Added Successfully";
-            $_SESSION['msg']="News blog has been updated  successfully"; 
-            header('Location:./blog-home.php');
-            //wp_redirect("blog-home.php"); 
+            $_SESSION['msg']="Record has been updated  successfully"; 
+            header('location:registrations.php');
             exit;
       } else {
-        $_SESSION['msg']="Error: News blog was not updated, please try again"; 
-        header('Location:./blog-home.php');
-        //wp_redirect("blog-home.php");
-        exit;
-        echo "Error: " . $sql . "<br>" . $conn->error;
+            $_SESSION['msg']="Error: Record was not updated, please try again"; 
+            header('location:registrations.php');
+            exit;
+            echo "Error: " . $sql . "<br>" . $conn->error;
       }
        
       $conn->close();
@@ -44,7 +73,12 @@ if(isset($_GET['edit'])){
   
 } else {  //Add New Registration 
 
-  if(isset($_POST['submit'])){
+  if(isset($_POST['submit'])){ 
+    /* print_r($_POST); 
+    
+    $tst = isset($_POST['ariSymptomps']) ? "checked" : "unchecked";
+    echo $tst;
+    exit; */
   
     $patientName = mysqli_real_escape_string($conn, $_POST['patientName']);
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
@@ -65,8 +99,21 @@ if(isset($_GET['edit'])){
     $paymentRefNo = mysqli_real_escape_string($conn, $_POST['paymentRefNo']);
     $staffCode = mysqli_real_escape_string($conn, $_POST['staffCode']);
     $testLocation = mysqli_real_escape_string($conn, $_POST['testLocation']);
-    $ariSymptomps = mysqli_real_escape_string($conn, $_POST['ariSymptomps']);
-    $contraindication = mysqli_real_escape_string($conn, $_POST['contraindication']);
+    $ariSymptomps = isset($_POST['ariSymptomps']) ? "1" : "0";
+    $contraindication = isset($_POST['contraindication']) ? "1" : "0";
+
+    $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE passportNumber = '".$passportNumber."'");
+    if(mysqli_num_rows($s1)) {
+      $_SESSION['msg']="This passport Number is already registered!"; 
+      header('location:register-form.php');
+      exit;
+    }
+    $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE nric_fin_number = '".$nric_fin_number."'");
+    if(mysqli_num_rows($s1)) {
+      $_SESSION['msg']="NRIC/FIN is already registered!"; 
+      header('location:register-form.php');
+      exit;
+    }
 
     $sql = "INSERT INTO registrations (patientName, dob, gender,passportNumber,nric_fin_number,nationality,
             contactNumber,email,testType,specimenType,clinicName,physician_mcr,testDate,testTime,paymentMode,
