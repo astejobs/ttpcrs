@@ -76,16 +76,20 @@ if(isset($_POST["export-to-excel"]))
 $writer = new Xlsx($spreadsheet);
     $rowCount = 2;
     foreach ($tasks as $element) {
+        $dobDate=date_create($element['dob']);
+        $testDate=date_create($element['testDate']);
+        $testTime=date_create($element['testTime']);
+        
         $sheet->setCellValue('A' . $rowCount, $element['patientName']);
-        $sheet->setCellValue('B' . $rowCount, $element['dob']);
+        $sheet->setCellValue('B' . $rowCount, date_format($dobDate,"d/m/Y"));
         $sheet->setCellValue('C' . $rowCount, $element['gender']);
         $sheet->setCellValue('D' . $rowCount, $element['passportNumber']);
         $sheet->setCellValue('E' . $rowCount, $element['contactNumber']);
         $sheet->setCellValue('F' . $rowCount, $element['nationality']);
         $sheet->setCellValue('G' . $rowCount, $element['nric_fin_number']);
         $sheet->setCellValue('H' . $rowCount, $element['testType']);
-        $sheet->setCellValue('I' . $rowCount, $element['testDate']);
-        $sheet->setCellValue('J' . $rowCount, $element['testTime']);
+        $sheet->setCellValue('I' . $rowCount, date_format($testDate,"d/m/Y"));
+        $sheet->setCellValue('J' . $rowCount, date_format($testTime,"h:i A"));
         $sheet->setCellValue('K' . $rowCount, $element['testLocation']);
         $sheet->setCellValue('L' . $rowCount, $element['clinicName']);
         $sheet->setCellValue('M' . $rowCount, $element['physician_mcr']);
