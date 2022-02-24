@@ -48,7 +48,7 @@
         <ul>
           <li class="m1" label="Home"><a href="register-form.php">Register</a></li>
           
-          <li class="drop-down m1" label="Contact"><a href="">Reports</a>  
+          <li class="drop-down m1" label="Contact"><a href="reports.php">Reports</a>  
             <ul>
               <li><a href="dummy.php">Past Attendance</a></li>           
             </ul>

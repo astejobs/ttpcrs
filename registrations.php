@@ -110,7 +110,7 @@ require_once('footer.php');
             'columns': [
                 { data: 'id' },
                 { data: 'patientName' },
-                { data: function (row) { console.log("called");
+                { data: function (row) { 
                     if (row.dob == null) return "";
                     const dob = moment(row.dob).format('DD/MM/YYYY');
                     return (dob=="Invalid date") ? "" : dob;
