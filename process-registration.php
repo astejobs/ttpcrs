@@ -89,6 +89,7 @@ if(isset($_GET['update'])){
     $nationality = mysqli_real_escape_string($conn, $_POST['nationality']);
     $contactNumber = mysqli_real_escape_string($conn, $_POST['contactNumber']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $serviceType = mysqli_real_escape_string($conn, $_POST['serviceType']);
     $testType = mysqli_real_escape_string($conn, $_POST['testType']);
     $specimenType = mysqli_real_escape_string($conn, $_POST['specimenType']);
     $clinicName = mysqli_real_escape_string($conn, $_POST['clinicName']);
@@ -102,27 +103,27 @@ if(isset($_GET['update'])){
     $ariSymptomps = isset($_POST['ariSymptomps']) ? "1" : "0";
     $contraindication = isset($_POST['contraindication']) ? "1" : "0";
 
-    $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE passportNumber = '".$passportNumber."'");
+    /* $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE passportNumber = '".$passportNumber."'");
     if(mysqli_num_rows($s1)) {
       $_SESSION['msg']="This passport Number is already registered!"; 
       header('location:register-form.php');
       exit;
-    }
-    $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE nric_fin_number = '".$nric_fin_number."'");
+    } */
+   /*  $s1 = mysqli_query($conn, "SELECT * FROM registrations WHERE nric_fin_number = '".$nric_fin_number."'");
     if(mysqli_num_rows($s1)) {
       $_SESSION['msg']="NRIC/FIN is already registered!"; 
       header('location:register-form.php');
       exit;
-    }
+    } */
 
     $sql = "INSERT INTO registrations (patientName, dob, gender,passportNumber,nric_fin_number,nationality,
-            contactNumber,email,testType,specimenType,clinicName,physician_mcr,testDate,testTime,paymentMode,
-            paymentRefNo,staffCode,testLocation,ari_symptoms,contraindication)
-            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            contactNumber,email,serviceType,testType,specimenType,clinicName,physician_mcr,testDate,testTime,
+            paymentMode,paymentRefNo,staffCode,testLocation,ari_symptoms,contraindication)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param("ssssssssssssssssssss", $patientName,$dobDate,$gender,$passportNumber,$nric_fin_number,$nationality,
-                      $contactNumber,$email,$testType,$specimenType,$clinicName,$performing_mcr,$testDate,
+    $stmt->bind_param("sssssssssssssssssssss", $patientName,$dobDate,$gender,$passportNumber,$nric_fin_number,$nationality,
+                      $contactNumber,$email,$serviceType,$testType,$specimenType,$clinicName,$performing_mcr,$testDate,
                     $testTime,$paymentMode,$paymentRefNo,$staffCode,$testLocation,$ariSymptomps,$contraindication);
     if($stmt->execute()) {
       $last_id = $conn->insert_id;

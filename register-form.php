@@ -3,6 +3,11 @@
   require_once('countries.php');
   $activePage = "Home";
 ?>
+<style>
+    .iti { width: 100%; }
+</style>
+<link rel="stylesheet" href="assets/js/teleInput/intlTelInput.css" />
+   
 <section id="main-section" class="clearfix">
 	<div class="container-fluid pt-5">
 
@@ -10,7 +15,7 @@
   <div class="container mt-5">
         <div class="row">
         <div class="col-md-12">
-        <form class="row" action="process-registration.php" method="post" id="form">
+        <form class="row" action="process-registration.php" method="post" id="form" autocomplete="off">
             <div class="text-center">
                 <h4 class="text-center mx-auto"> PCR Test Online Registration Form</h4>
             </div>
@@ -52,24 +57,24 @@
             <div class="col-md-6 form-group">
                 <label for="Gender" class="control-label"> <b> Gender </b><span class="text-danger">*</span></label>
                 <select class="form-control" name="gender"  required>
-                    <option value="">Please Select </option>
+                    <!-- <option value="">Please Select </option> -->
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
             </div>
             <div class="col-md-6">
-                <label for="Patient Name" class="form-label"> <b>Passport number</b> <span class="text-danger">*</span></label>
+                <label for="Patient Name" class="form-label"> <b>Passport / NRIC / FIN</b> <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" name="passportNumber" placeholder="" required />
             </div>
             <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>NRIC/FIN number </b></label>
                 <input type="text" class="form-control" name="nric_fin_number" placeholder="">
-                <div class="emf-div-instruction">For Singaporeans/PR only</div>
+                <div class="emf-div-instruction">For Singaporeans / PR / WP / EP Holders Only</div>
             </div>
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Nationality </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="nationality" id="selectCountry" required>
-                    <option>Please Select </option>
+                    <!-- <option>Please Select </option> -->
                     <!-- <option value="1">Singapore SG</option>
                     <option value="2">Malasiya</option>
                     <option value="3">Indonesia ID</option>
@@ -89,26 +94,46 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="Phone" class="control-label"> <b>Contact Number </b><span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="contactNumber" placeholder="" data-error="Enter Your Phone Number"
-                    required pattern="\+?\d[\d -]{8,12}\d">
-                <small >(with 3 digit country code. SG = 065)</small>
+                <input autocomplete="false"  id="phone" type="tel" name="phone" class="form-control" />
+                <input type="hidden" id="contactNumber" name="contactNumber" />
+                <div class="input-group">
+                    <!-- <input type="text" class="form-control col-sm-2 input-sm" placeholder="code" />
+                    <span class="input-group-btn" style="width:0px;"></span> -->
+                   <!--  <input type="text" class="form-control input-sm" value="test2" /> -->
+                    <!-- <input type="tel" class="form-control input-sm" name="contactNumber" placeholder="Phone Number" data-error="Enter Your Phone Number"
+                        required pattern="\+?\d[\d -]{8,12}\d"> -->
+                    </div>
+                    <small >(with 3 digit country code. SG = 065)</small>
             </div>
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Email Address </b><span class="text-danger">*</span> </label>
                 <input type="email" class="form-control" name="email" placeholder="Enter Email Address"
                     data-error="This email address is invalid" required>
             </div>
             <div class="col-md-6 form-group">
+                <label for="inputEmail" class="control-label"> <b>Service Type </b> </label>
+                <select class="form-control" name="serviceType" >
+                    <!-- <option selected>Please Select </option> -->
+                    <option value="Standard">Standard</option>
+                    <option value="Express">Express</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>Test Code/Type </b></label>
-                <input type="text" class="form-control" name="testType" value="PDT/PCR" placeholder=" PDT/PCR" readonly="readonly">
+                <!-- <input type="text" class="form-control" name="testType" value="PDT/PCR" placeholder=" PDT/PCR" readonly="readonly"> -->
+                <select class="form-control" name="testType" >
+                    <!-- <option selected>Please Select </option> -->
+                    <option value="PDT / PCR">PDT / PCR</option>
+                    <option value="PDT / SERO">PDT / SERO</option>
+                </select>
             </div>
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Specimen Type</b></label>
                 <select class="form-control" name="specimenType" >
-                    <option selected>Please Select </option>
+                    <!-- <option selected>Please Select </option> -->
                     <option value="NP">NP</option>
-                    <option value="OP/MT">OP/MT</option>
                     <option value="OP ONLY">OP ONLY</option>
+                    <option value="SERO ONLY">SERO ONLY</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">
@@ -164,13 +189,14 @@
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b>Test Location </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="testLocation" required>
-                    <option selected>Please Select </option>
-                    <option value="JE">JE</option>
-                    <option value="CR">CR</option>
-                    <option value="ML">ML</option>
+                    <!-- <option selected>Please Select </option> -->
+                    <option value="JEC">JEC</option>
+                    <option value="CIR">CIR</option>
+                    <option value="MAR">MAR</option>
                     <option value="BP">BP</option>
-                    <option value="WD">WD</option>
+                    <option value="WP">WP</option>
                     <option value="GM">GM</option>
+                    <option value="MER">MER</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">
@@ -232,12 +258,21 @@
     require_once('footer.php');
   ?>
   <script type="text/javascript" src="assets/js/jquery.searchabledropdown-1.0.8.min.js"></script>
+  <script src="assets/js/teleInput/intlTelInput.min.js"></script>
+
   <script>
     $(document).ready(function() {
 
-        $(document).ready(function() {
-			$("#selectCountry").searchable();
-		});
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+                preferredCountries: ["sg", "us", "th", "in", "ph","vn","cn"],
+                hiddenInput: "contactNumberhidden",
+                separateDialCode: true,
+                utilsScript:"assets/js/teleInput/utils.js",
+        });
+        phoneInput.setPlaceholderNumberType("MOBILE");
+	
+      //$("#selectCountry").searchable();
 
       optional_config_dob = {
           maxDate: new Date().setFullYear( new Date().getFullYear() - 1 ),
@@ -268,25 +303,43 @@
       $("#test_date").flatpickr(optional_config_td);
       $(".timepicker").flatpickr(time_config);
 
-    
-    $('button[name="register"]').on('click', function(e) {           
-       
-        $('#confirm').modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-            $("#submit").on('click', function(e) {
-                console.log("Submitting");
-                $('#confirm').modal('hide');
-                return true;
-            });
-            $("#cancel").on('click', function(e){
-                console.log("Cancelling");
-                e.preventDefault();                
-            });
+        
+        $('button[name="register"]').on('click', function(e) { 
+            
+            if(validatePhone(phoneInput)) {
+
+                $('#confirm').modal({
+                        backdrop: 'static',
+                        keyboard: false
+                });
+                $("#submit").on('click', function(e) { //e.preventDefault(); console.log($("form").serializeArray());
+                        console.log("Submitting");
+                        $('#confirm').modal('hide');
+                        return true;
+                });
+                $("#cancel").on('click', function(e){
+                        console.log("Cancelling");
+                        e.preventDefault();                
+                });
+            }
+        
         });
 
+        
     });
+
+    
+    function validatePhone(phoneInput) { 
+        const phoneNumber = phoneInput.getNumber();
+        var isValid = phoneInput.isValidNumber();
+        if(phoneNumber!="" && isValid) {
+            $("#contactNumber").val(phoneNumber);
+            return true;
+        }else {
+            alert("Invalid Phone Number!!");
+            return false;
+        }
+    }
 
     function setDob(date) {
       console.log(date);

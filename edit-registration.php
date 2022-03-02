@@ -17,6 +17,11 @@
           }
   }
 ?>
+<style>
+    .iti { width: 100%; }
+</style>
+<link rel="stylesheet" href="assets/js/teleInput/intlTelInput.css" />
+ 
 <section id="main-section" class="clearfix">
 	<div class="container-fluid pt-5">
 
@@ -67,7 +72,7 @@
             <div class="col-md-6 form-group">
                 <label for="Gender" class="control-label"> <b> Gender </b><span class="text-danger">*</span></label>
                 <select class="form-control" name="gender"  required>
-                    <option value="">Please Select </option>
+                    <!-- <option value="">Please Select </option> -->
                     <option value="M"<?=$row['gender'] == 'M' ? ' selected="selected"' : '';?>>M</option>
                     <option value="F"<?=$row['gender'] == 'F' ? ' selected="selected"' : '';?>>F</option>
                 </select>
@@ -79,7 +84,7 @@
             <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>NRIC/FIN number </b></label>
                 <input type="text" class="form-control" value="<?php echo $row['nric_fin_number'] ?>" name="nric_fin_number" placeholder="">
-                <div class="emf-div-instruction">For Singaporeans/PR only</div>
+                <div class="emf-div-instruction">For Singaporeans / PR / WP / EP Holders Only</div>
             </div>
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Nationality </b> <span class="text-danger">*</span></label>
@@ -109,26 +114,40 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="Phone" class="control-label"> <b>Contact Number </b><span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="contactNumber" placeholder="" data-error="Enter Your Phone Number"
-                    required pattern="\+?\d[\d -]{8,12}\d" value="<?php echo $row['contactNumber'] ?>">
+                <input autocomplete="false"  id="phone" type="tel" name="phone" class="form-control" />
+                <input type="hidden" id="contactNumber" name="contactNumber" />
+                <!-- <input type="text" class="form-control" name="contactNumber" placeholder="" data-error="Enter Your Phone Number"
+                    required pattern="\+?\d[\d -]{8,12}\d" value="<?php //echo $row['contactNumber'] ?>"> -->
                 <small >(with 3 digit country code. SG = 065)</small>
             </div>
-            <div class="col-md-12 form-group">
+            <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Email Address </b><span class="text-danger">*</span> </label>
                 <input type="email" class="form-control" value="<?php echo $row['email'] ?>" name="email" placeholder="Enter Email Address"
                     data-error="This email address is invalid" required>
             </div>
             <div class="col-md-6 form-group">
+                <label for="inputEmail" class="control-label"> <b>Service Type </b> </label>
+                <select class="form-control" name="serviceType" >
+                    <!-- <option selected>Please Select </option> -->
+                    <option value="Standard" <?=$row['serviceType'] == 'Standard' ? ' selected="selected"' : '';?>>Standard</option>
+                    <option value="Express" <?=$row['serviceType'] == 'Express' ? ' selected="selected"' : '';?>>Express</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>Test Code/Type </b></label>
-                <input type="text" class="form-control" value="<?php echo $row['testType'] ?>" name="testType" placeholder=" PDT/PCR" readonly="readonly">
+                <select class="form-control" name="testType" >
+                    <!-- <option selected>Please Select </option> -->
+                    <option value="PDT / PCR" <?=$row['testType'] == 'PDT / PCR' ? ' selected="selected"' : '';?>>PDT / PCR</option>
+                    <option value="PDT / SERO" <?=$row['testType'] == 'PDT / SERO' ? ' selected="selected"' : '';?>>PDT / SERO</option>
+                </select>
             </div>
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Specimen Type</b></label>
                 <select class="form-control" name="specimenType" >
                     <option>Please Select </option>
                     <option value="NP" <?=$row['specimenType'] == 'NP' ? ' selected="selected"' : '';?>>NP</option>
-                    <option value="OP/MT" <?=$row['specimenType'] == 'OP/MT' ? ' selected="selected"' : '';?>>OP/MT</option>
                     <option value="OP ONLY" <?=$row['specimenType'] == 'OP ONLY' ? ' selected="selected"' : '';?>>OP ONLY</option>
+                    <option value="SERO ONLY" <?=$row['specimenType'] == 'SERO ONLY' ? ' selected="selected"' : '';?>>SERO ONLY</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">
@@ -185,12 +204,13 @@
                 <label for="Nationality" class="control-label"> <b>Test Location </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="testLocation" required>
                     <option selected>Please Select </option>
-                    <option value="JE"<?=$row['testLocation'] == 'JE' ? ' selected="selected"' : '';?>>JE</option>
-                    <option value="CR"<?=$row['testLocation'] == 'CR' ? ' selected="selected"' : '';?>>CR</option>
-                    <option value="ML"<?=$row['testLocation'] == 'ML' ? ' selected="selected"' : '';?>>ML</option>
+                    <option value="JE"<?=$row['testLocation'] == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
+                    <option value="CR"<?=$row['testLocation'] == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
+                    <option value="ML"<?=$row['testLocation'] == 'MAR' ? ' selected="selected"' : '';?>>MAR</option>
                     <option value="BP"<?=$row['testLocation'] == 'BP' ? ' selected="selected"' : '';?>>BP</option>
-                    <option value="WD"<?=$row['testLocation'] == 'WD' ? ' selected="selected"' : '';?>>WD</option>
+                    <option value="WD"<?=$row['testLocation'] == 'WP' ? ' selected="selected"' : '';?>>WP</option>
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
+                    <option value="GM"<?=$row['testLocation'] == 'MER' ? ' selected="selected"' : '';?>>MER</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">
@@ -254,11 +274,22 @@
     require_once('footer.php');
   ?>
   <script type="text/javascript" src="assets/js/jquery.searchabledropdown-1.0.8.min.js"></script>
+  <script src="assets/js/teleInput/intlTelInput.min.js"></script>
   <script>
     $(document).ready(function() {
+        
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+                preferredCountries: ["sg", "us", "th", "in", "ph","vn","cn"],
+                hiddenInput: "contactNumberhidden",
+                separateDialCode: true,
+                utilsScript:"assets/js/teleInput/utils.js",
+        });
+        phoneInput.setPlaceholderNumberType("MOBILE");
+        phoneInput.setNumber("<?php echo $row['contactNumber'] ?>");
 
         $(document).ready(function() {
-			$("#selectCountry").searchable();
+			//$("#selectCountry").searchable();
 		});
 
       optional_config_dob = {
@@ -292,11 +323,13 @@
       $(".timepicker").flatpickr(time_config);
 
     
-    $('button[name="register"]').on('click', function(e) {           
+    $('button[name="register"]').on('click', function(e) {   
+        
+        if(validatePhone(phoneInput)) {        
        
-        $('#confirm').modal({
-                backdrop: 'static',
-                keyboard: false
+            $('#confirm').modal({
+                    backdrop: 'static',
+                    keyboard: false
             });
             $("#submit").on('click', function(e) {
                 console.log("Submitting");
@@ -307,9 +340,23 @@
                 console.log("Cancelling");
                 e.preventDefault();                
             });
-        });
+        }
+    });
 
     });
+
+    function validatePhone(phoneInput) { 
+        const phoneNumber = phoneInput.getNumber();
+        var isValid = phoneInput.isValidNumber();
+        if(phoneNumber!="" && isValid) {
+            $("#contactNumber").val(phoneNumber);
+            //$("#contactNumberErr").text("Please enter valid contact number");
+            return true;
+        }else {
+            alert("Invalid Phone Number!!");
+            return false;
+        }
+    }
 
     function setDob(date) {
       console.log(date);
