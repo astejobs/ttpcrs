@@ -305,7 +305,11 @@
 
         
         $('button[name="register"]').on('click', function(e) { 
-            
+            var dob_date = $("#dob_date").val();
+            if(dob_date=="") {
+                alert("Enter Date of birth!");
+                return;
+            }
             if(validatePhone(phoneInput)) {
 
                 $('#confirm').modal({
