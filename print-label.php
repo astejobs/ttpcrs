@@ -16,6 +16,7 @@ require_once('connection.php');
     padding: 0px !important;
     padding-right: 2px !important; 
     padding-left: 2px !important; 
+    font-weight: bold;
   }
   .float-right {
     float:right;
@@ -79,7 +80,7 @@ if(isset($_GET['id'])) {
                               padding: 0px !important;
                             }
                             @page { margin: 0; }
-                            body { margin: 1.6cm; }
+                            body { margin: 10px; }
                           }
                         </style>
                       <table class="table-sm table-borderless lbl table-light" id="labelToPrint1">
@@ -226,7 +227,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;}@page { margin: 0; }body { margin: 1.6cm; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:bold}@page { margin: 0; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }
