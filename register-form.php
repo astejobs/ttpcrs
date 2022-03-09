@@ -30,6 +30,7 @@
                             unset($_SESSION['msg']);
                         }
                     ?>
+                    <span class="text-danger" id="errSpace"></span>
                 </div>
 
                 <label for="Patient Name" class="form-label"> <b>Patient Name </b><span class="text-danger">*</span> </label>
@@ -57,7 +58,7 @@
             <div class="col-md-6 form-group">
                 <label for="Gender" class="control-label"> <b> Gender </b><span class="text-danger">*</span></label>
                 <select class="form-control" name="gender"  required>
-                    <!-- <option value="">Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
@@ -74,7 +75,7 @@
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Nationality </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="nationality" id="selectCountry" required>
-                    <!-- <option>Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <!-- <option value="1">Singapore SG</option>
                     <option value="2">Malasiya</option>
                     <option value="3">Indonesia ID</option>
@@ -113,7 +114,7 @@
             <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Service Type </b> </label>
                 <select class="form-control" name="serviceType" >
-                    <!-- <option selected>Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <option value="Standard">Standard</option>
                     <option value="Express">Express</option>
                 </select>
@@ -122,7 +123,7 @@
                 <label for="Patient Name" class="form-label"> <b>Test Code/Type </b></label>
                 <!-- <input type="text" class="form-control" name="testType" value="PDT/PCR" placeholder=" PDT/PCR" readonly="readonly"> -->
                 <select class="form-control" name="testType" >
-                    <!-- <option selected>Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <option value="PDT / PCR">PDT / PCR</option>
                     <option value="PDT / SERO">PDT / SERO</option>
                 </select>
@@ -130,7 +131,7 @@
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Specimen Type</b></label>
                 <select class="form-control" name="specimenType" >
-                    <!-- <option selected>Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <option value="NP">NP</option>
                     <option value="OP ONLY">OP ONLY</option>
                     <option value="SERO ONLY">SERO ONLY</option>
@@ -171,7 +172,7 @@
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b> Mode Of Payment </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="paymentMode"  required>
-                    <option selected>Please Select </option>
+                    <option value="Please Select">Please Select</option>
                     <option value="Credit Card">Credit Card</option>
                     <option value="NETS">NETS</option>
                     <option value="Pre-Paid(Online)">Pre-Paid(Online)</option>
@@ -189,14 +190,16 @@
             <div class="col-md-6 form-group">
                 <label for="Nationality" class="control-label"> <b>Test Location </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="testLocation" required>
-                    <!-- <option selected>Please Select </option> -->
+                    <option value="Please Select">Please Select</option>
                     <option value="JEC">JEC</option>
                     <option value="CIR">CIR</option>
                     <option value="MAR">MAR</option>
                     <option value="BP">BP</option>
                     <option value="WP">WP</option>
                     <option value="GM">GM</option>
-                    <option value="MER">MER</option>
+                    <option value="ROXY">ROXY</option>
+                    <option value="MTS">MTS</option>
+                    <option value="SPEC">SPEC</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">
@@ -310,7 +313,7 @@
                 alert("Enter Date of birth!");
                 return;
             }
-            if(validatePhone(phoneInput)) {
+            if(validatePhone(phoneInput) && validateForm()) {
 
                 $('#confirm').modal({
                         backdrop: 'static',
@@ -343,6 +346,21 @@
             alert("Invalid Phone Number!!");
             return false;
         }
+    }
+
+    function validateForm() {
+        var flag = true;
+        $('select').each(function() {
+           val = $(this).find(":selected").text(); 
+           $(this).css("border-color","inherit");
+           if(val=="Please Select") {
+               flag = false;
+               $(this).css("border-color","red");
+               $("#errSpace").text("Please check required fields");
+               $("html, body").animate({ scrollTop: 0 }, "slow");
+           }
+        });
+        return flag;
     }
 
     function setDob(date) {

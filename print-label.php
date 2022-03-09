@@ -7,6 +7,10 @@ require_once('connection.php');
 <style>
   td, th {
     padding: 0px;
+    width: max-content;
+  }
+  .rt-align {
+    text-align: right;
   }
   .table-sm td, .table-sm th {
     padding: 0px !important;
@@ -17,7 +21,7 @@ require_once('connection.php');
   .lbl {
     width:189px;
     height: 129px;
-    font-size:6px !important;
+    font-size:8px !important;
     /* border:1px solid red;   */  
   }
 </style>
@@ -64,7 +68,7 @@ if(isset($_GET['id'])) {
                             .lbl {
                               width:189px;
                               height: 129px;
-                              font-size:6px !important;
+                              font-size:8px !important;
                               /* border:1px solid red; */
                               background-color: #ffffff;
                             }
@@ -83,7 +87,7 @@ if(isset($_GET['id'])) {
                                   echo date_format($tdate,"d/m/Y");
                                 ?>
                             </td>
-                            <td class="float-right">
+                            <td class="rt-align">
                                 <?php
                                   $ttime=date_create($row['testTime']);
                                   echo date_format($ttime,"h:i A");
@@ -92,30 +96,35 @@ if(isset($_GET['id'])) {
                           </tr>
                           <tr>
                             <td><?php echo $row['patientName'] ?></td>
-                            <td class="float-right"><?php echo $row['passportNumber'] ?></td>
+                            <td class="rt-align"><?php echo $row['gender'] ?></td>
                           </tr>
                           <tr>
-                            <td> DOB: 
+                          <tr>
+                            <td><strong>Passport: </strong> <?php echo $row['passportNumber'] ?></td>
+                            <td class="rt-align"><strong>NRIC/FIN: </strong><?php echo $row['nric_fin_number'] ?></td>
+                          </tr>
+                          <tr>
+                            <td> <strong>DOB: </strong>
                                 <?php
                                   $tdate=date_create($row['dob']);
                                   echo date_format($tdate,"d/m/Y");
                                 ?>
                             </td>
-                            <td class="float-right"><?php echo $row['nric_fin_number'] ?></td>                           
+                            <td class="rt-align"><?php echo $row['nationality'] ?></td>                           
                           </tr>
                           <tr>
-                            <td><?php echo $row['nationality'] ?></td>
-                            <td class="float-right"><?php echo $row['testType']." &emsp;&emsp;&emsp; ".$row['specimenType']?></td>
+                            <td ><?php echo $row['testType']." &emsp;&emsp;&emsp; ".$row['specimenType'] ?></td>
+                            <td class="rt-align"><?php echo $row['serviceType']?></td>
+                          </tr>
+                          <!-- <tr>
+                            <td colspan="2"> echo //$row['clinicName']; ?></td>
                           </tr>
                           <tr>
-                            <td colspan="2"><?php echo $row['clinicName'] ?></td>
-                          </tr>
-                          <tr>
-                          <td colspan="2" style="text-align:center"><?php echo $row['physician_mcr'] ?></td>
-                          </tr>
+                          <td colspan="2" style="text-align:center"> echo //$row['physician_mcr'] ?></td>
+                          </tr> -->
                           <tr>
                             <td><?php echo $row['staffCode'] ?></td>
-                            <td class="float-right"><?php echo $row['testLocation'] ?></td>
+                            <td class="rt-align"><?php echo $row['testLocation'] ?></td>
                           </tr>
                           <tr>
        <!--                      <td style="text-align:center" colspan="2">
@@ -211,7 +220,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:6px !important;} .lbl {width:189px;height: 129px;font-size:6px !important;}.table-sm td, .table-sm th {padding: 0px !important;}@page { margin: 0; }body { margin: 1.6cm; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:8px !important;} .lbl {width:189px;height: 129px;font-size:8px !important;}.table-sm td, .table-sm th {padding: 0px !important;}@page { margin: 0; }body { margin: 1.6cm; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }
