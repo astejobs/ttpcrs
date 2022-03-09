@@ -119,8 +119,8 @@ if(isset($_GET['id'])) {
                             <td class="rt-align"><?php echo $row['nationality'] ?></td>                           
                           </tr>
                           <tr>
-                            <td ><?php echo $row['testType']." &emsp;&emsp;&emsp; ".$row['specimenType'] ?></td>
-                            <td class="rt-align"><?php echo $row['serviceType']?></td>
+                            <td style="font-size:9px;"><?php echo $row['testType']." &emsp; ".$row['specimenType'] ?></td>
+                            <td class="rt-align" style="font-size:9px;"><?php echo $row['serviceType']?></td>
                           </tr>
                           <!-- <tr>
                             <td colspan="2"> echo //$row['clinicName']; ?></td>
