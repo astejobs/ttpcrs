@@ -25,7 +25,7 @@ require_once('connection.php');
     width:189px;
     height: 129px;
     font-size:11px !important;
-    font-weight: 600;   
+    /* font-weight: 600; */   
     /* border:1px solid red;   */  
   }
 </style>
@@ -120,8 +120,8 @@ if(isset($_GET['id'])) {
                             <td class="rt-align"><?php echo $row['nationality'] ?></td>                           
                           </tr>
                           <tr>
-                            <td style="font-size:9px;"><?php echo $row['testType']." &emsp; ".$row['specimenType'] ?></td>
-                            <td class="rt-align" style="font-size:9px;"><?php echo $row['serviceType']?></td>
+                            <td style="font-size:8px;"><?php echo $row['testType']." &nbsp&nbsp&nbsp&nbsp ".$row['specimenType'] ?></td>
+                            <td class="rt-align" style="font-size:8px;"><?php echo $row['serviceType']?></td>
                           </tr>
                           <!-- <tr>
                             <td colspan="2"> echo //$row['clinicName']; ?></td>
