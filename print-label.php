@@ -101,7 +101,11 @@ if(isset($_GET['id'])) {
                           <tr>
                           <tr>
                             <td><strong>Passport: </strong> <?php echo $row['passportNumber'] ?></td>
-                            <td class="rt-align"><strong>NRIC/FIN: </strong><?php echo $row['nric_fin_number'] ?></td>
+                            <td class="rt-align">
+                                <?php if( !empty($row['nric_fin_number']) ) {  ?>
+                                    <strong>NRIC/FIN: </strong><?php echo $row['nric_fin_number'] ?>
+                                <?php } ?>
+                            </td>
                           </tr>
                           <tr>
                             <td> <strong>DOB: </strong>
