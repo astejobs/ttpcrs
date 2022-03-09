@@ -14,6 +14,8 @@ require_once('connection.php');
   }
   .table-sm td, .table-sm th {
     padding: 0px !important;
+    padding-right: 2px !important; 
+    padding-left: 2px !important; 
   }
   .float-right {
     float:right;
@@ -21,7 +23,8 @@ require_once('connection.php');
   .lbl {
     width:189px;
     height: 129px;
-    font-size:8px !important;
+    font-size:11px !important;
+    font-weight: 600;   
     /* border:1px solid red;   */  
   }
 </style>
@@ -68,7 +71,7 @@ if(isset($_GET['id'])) {
                             .lbl {
                               width:189px;
                               height: 129px;
-                              font-size:8px !important;
+                              font-size:11px !important;
                               /* border:1px solid red; */
                               background-color: #ffffff;
                             }
@@ -102,7 +105,8 @@ if(isset($_GET['id'])) {
                           <tr>
                             <td><strong>Passport: </strong> <?php echo $row['passportNumber'] ?></td>
                             <td class="rt-align">                                
-                                <strong>NRIC/FIN: </strong><?php echo $row['nric_fin_number'] ?>                                
+                                <!-- <strong>NRIC/FIN: </strong> -->
+                                <?php echo $row['nric_fin_number'] ?>                                
                             </td>
                           </tr>
                           <tr>
@@ -222,7 +226,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:8px !important;} .lbl {width:189px;height: 129px;font-size:8px !important;}.table-sm td, .table-sm th {padding: 0px !important;}@page { margin: 0; }body { margin: 1.6cm; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;}@page { margin: 0; }body { margin: 1.6cm; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }
