@@ -8,6 +8,8 @@ require_once('connection.php');
   td, th {
     padding: 0px;
     width: max-content;
+    margin: 0px;
+    /* letter-spacing: 1px; */
   }
   .rt-align {
     text-align: right;
@@ -16,7 +18,7 @@ require_once('connection.php');
     padding: 0px !important;
     padding-right: 2px !important; 
     padding-left: 2px !important; 
-    font-weight: bold;
+    font-weight: 600;
   }
   .float-right {
     float:right;
@@ -227,7 +229,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:bold}@page { margin: 0; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:bold}@page { margin: 0; size: 189px 129px; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }
