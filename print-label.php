@@ -18,7 +18,7 @@ require_once('connection.php');
     padding: 0px !important;
     padding-right: 2px !important; 
     padding-left: 2px !important; 
-    font-weight: 600;
+    /* font-weight: 500; */
   }
   .float-right {
     float:right;
@@ -26,7 +26,7 @@ require_once('connection.php');
   .lbl {
     width:189px;
     height: 129px;
-    font-size:11px !important;
+    font-size:9px !important;
     /* font-weight: 600; */   
     /* border:1px solid red;   */  
   }
@@ -74,7 +74,7 @@ if(isset($_GET['id'])) {
                             .lbl {
                               width:189px;
                               height: 129px;
-                              font-size:11px !important;
+                              font-size:9px !important;
                               /* border:1px solid red; */
                               background-color: #ffffff;
                             }
@@ -229,7 +229,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:11px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:11px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:bold}@page { margin: 0; size: 189px 129px; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:9px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:9px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:normal}@page { margin: 0; size: 189px 129px; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }
