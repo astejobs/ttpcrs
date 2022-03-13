@@ -57,12 +57,13 @@
   <div class="row">
    <div class="col-sm-12">
        <div class="container-fluid mt-5"> 
+       <p class=" p-2 font-weight-bold text-center">GENERATE REPORTS</p>
            <?php if(isset($_SESSION['ID'])) { ?>
                <form action="reports.php" method="POST">
                     <div class="row mt-3">
                         <div class="col-sm-6">
                             <div class="form-group">  
-                                <label for="">Select Location</label>
+                                <label >Select Location</label>
                                 <select class="form-control" name="testLocation">
                                     <option>Please Select </option>
                                     <option value="JE"<?=$site == 'JE' ? ' selected="selected"' : '';?>>JE</option>

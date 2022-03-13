@@ -15,10 +15,11 @@
   <div class="container mt-5">
         <div class="row">
         <div class="col-md-12">
+            <p class=" p-2 bg-dark text-white font-weight-bold text-center">PCR Test Online Registration Form</p>
         <form class="row" action="process-registration.php" method="post" id="form" autocomplete="off">
-            <div class="text-center">
-                <h4 class="text-center mx-auto"> PCR Test Online Registration Form</h4>
-            </div>
+            <!-- <div class="text-center"> -->
+                <!-- <h4 class="text-center mx-auto"> PCR Test Online Registration Form</h4> -->
+           <!--  </div> -->
             
             <div class="col-md-12 form-group">
                 <div class="col-sm-12">
@@ -198,6 +199,7 @@
                     <option value="WP">WP</option>
                     <option value="GM">GM</option>
                     <option value="ROXY">ROXY</option>
+                    <option value="CQC">CQC</option>
                     <option value="MTS">MTS</option>
                     <option value="SPEC">SPEC</option>
                 </select>

@@ -35,7 +35,7 @@
   
   <script src="assets/vendor/jquery/jquery.min.js"></script>
 </head>
-<body>
+<body style="background:url(https://bvimrcampus.com/Assets/img/login-bg.png)">
 	
 <?php
 /* require_once('header.php'); */
@@ -108,21 +108,23 @@ if(isset($_POST['login'])) {
 	<div class="container-fluid pt-5">
 	
 <!-- Body Section -->
-<section id="why-us" class="why-us">
+<section id="why-us" class="why-us" style="height:100%">
 	<div class="container-fluid">
-		<div class="row col-sm-12">
-			<?php
-				if(isset($_SESSION['invalidlogindetails'])) 
-				{ 
-					echo "<div class='alert alert-danger'><strong>".$_SESSION['invalidlogindetails']."</strong> !";
-					echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
-					unset($_SESSION['invalidlogindetails']);
-				}
-			?>
+		<div class="row">
+			<div class="row col-sm-12">
+				<?php
+					if(isset($_SESSION['invalidlogindetails'])) 
+					{ 
+						echo "<div class='alert alert-danger'><strong>".$_SESSION['invalidlogindetails']."</strong> !";
+						echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
+						unset($_SESSION['invalidlogindetails']);
+					}
+				?>
+			</div>
 		</div>
 	
 		<div class="row">
-			<div class="card-chart p-5 mx-auto" data-aos="slide-down">
+			<div class="card-chart col-sm-4 offset-md-4 p-5 mx-auto" data-aos="slide-down">
 				<form action="login.php" method="post">
 					<div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">Username</label>

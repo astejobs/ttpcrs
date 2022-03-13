@@ -17,6 +17,7 @@
   <div class="row">
    <div class="col-sm-12">
        <div class="container-fluid mt-5"> 
+       <p class=" p-2 font-weight-bold text-center">SEARCH REGISTRATIONS</p>
            <div class="row mt-3">
                 <div class="col-sm-10 mt-3">
                     <div class="form-group">                       
