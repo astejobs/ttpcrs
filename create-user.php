@@ -84,12 +84,12 @@
                         
                         <div class="col-md-6 form-group">
                           <label> <b>Password </b> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" required id="password" name="password" placeholder="Password" />
+                          <input type="password" class="form-control" required id="password" name="password" placeholder="Password" />
                         </div> 
 
                         <div class="col-md-6 form-group">
                           <label> <b>Confirm Password </b> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" required id="confirmPassword" name="confirmPassword" placeholder="confirmPassword" />
+                          <input type="password" class="form-control" required id="confirmPassword" name="confirmPassword" placeholder="confirmPassword" />
                         </div>                 
 
                         <div class="col-md-6 form-group ">
