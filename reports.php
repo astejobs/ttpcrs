@@ -66,12 +66,17 @@
                                 <label >Select Location</label>
                                 <select class="form-control" name="testLocation">
                                     <option>Please Select </option>
-                                    <option value="JE"<?=$site == 'JE' ? ' selected="selected"' : '';?>>JE</option>
-                                    <option value="CR"<?=$site == 'CR' ? ' selected="selected"' : '';?>>CR</option>
-                                    <option value="ML"<?=$site == 'ML' ? ' selected="selected"' : '';?>>ML</option>
+                                    <option value="JEC"<?=$site == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
+                                    <option value="CIR"<?=$site == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
+                                    <option value="MAR"<?=$site == 'MAR' ? ' selected="selected"' : '';?>>MAR</option>
                                     <option value="BP"<?=$site == 'BP' ? ' selected="selected"' : '';?>>BP</option>
-                                    <option value="WD"<?=$site == 'WD' ? ' selected="selected"' : '';?>>WD</option>
+                                    <option value="WP"<?=$site == 'WP' ? ' selected="selected"' : '';?>>WP</option>
                                     <option value="GM"<?=$site == 'GM' ? ' selected="selected"' : '';?>>GM</option>
+                                    <option value="ROXY"<?=$site == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
+                                    <option value="CQC"<?=$site == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
+                                    <option value="MTS"<?=$site == 'MTS' ? ' selected="selected"' : '';?>>MTS</option>
+                                    <option value="SPEC"<?=$site == 'SPEC' ? ' selected="selected"' : '';?>>SPEC</option>
+
                                 </select>  
                             </div>                        
                         </div>                    
