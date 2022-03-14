@@ -181,13 +181,13 @@ $(document).ready(function() {
 <?php  
 require_once('footer.php');
 
-function url(){
+/* function url(){
     return sprintf(
       "%s://%s",
       isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
       $_SERVER['SERVER_NAME']
     );
-  }
+} */
 
   /* GET FULL URL */
  /*  function url(){

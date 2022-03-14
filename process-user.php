@@ -61,14 +61,17 @@ if (isset($_POST['submit'])) {
 
   	$query = "INSERT INTO users (name,username, site,position,role, password) 
   			  VALUES('$name','$username', '$site','$position','$role', '$pwd1')";
-  	mysqli_query($conn, $query);
+  	if(mysqli_query($conn, $query)) {
+          $_SESSION['success'] = "User Added Successfully!";
+          header('location:create-user.php');
+          exit;
+      }
   	//$_SESSION['username'] = $username;
-  	$_SESSION['success'] = "User Added Successfully!";
-  	header('location: create-user.php');
   } else {
       
     $_SESSION['error'] = $errors;
     header('location: create-user.php'); 
+    exit;
   }
 }
 
