@@ -55,13 +55,13 @@ if(isset($_GET['update'])){
                                        passportNumber='".$passportNumber."' WHERE id='".$id."'";
       
       if ($conn->query($sql) === TRUE) {            
-            echo "Blog Added Successfully";
+            //echo "Blog Added Successfully";
             $_SESSION['msg']="Record has been updated  successfully"; 
-            header('location:registrations.php');
+            header('location:edit-entries.php');
             exit;
       } else {
             $_SESSION['msg']="Error: Record was not updated, please try again"; 
-            header('location:registrations.php');
+            header('location:edit-entries.php');
             exit;
             echo "Error: " . $sql . "<br>" . $conn->error;
       }

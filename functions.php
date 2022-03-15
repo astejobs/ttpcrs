@@ -17,21 +17,22 @@ function exportToExcel($records) {
     $spreadsheet = new Spreadsheet();
     $sheet = $spreadsheet->getActiveSheet();
 
-    $sheet->setCellValue('A1', 'Date');
-    $sheet->setCellValue('B1', 'Time');
-    $sheet->setCellValue('C1', 'Test Location');
-    $sheet->setCellValue('D1', 'Name');
-    $sheet->setCellValue('E1', 'Passport');
-    $sheet->setCellValue('F1', 'NRIC/FIN');
-    $sheet->setCellValue('G1', 'Nationality');
-    $sheet->setCellValue('H1', 'Contact Number');
-    $sheet->setCellValue('I1', 'Email');
-    $sheet->setCellValue('J1', 'Service Type');
-    $sheet->setCellValue('K1', 'Test Code/Type');
-    $sheet->setCellValue('L1', 'Specimen Type');
-    $sheet->setCellValue('M1', 'Mode of Payment');
-    $sheet->setCellValue('N1', 'Payment Ref');
-    $sheet->setCellValue('O1', 'Staff Code');
+    $sheet->setCellValue('A1', 'S No.');
+    $sheet->setCellValue('B1', 'Date');
+    $sheet->setCellValue('C1', 'Time');
+    $sheet->setCellValue('D1', 'Test Location');
+    $sheet->setCellValue('E1', 'Name');
+    $sheet->setCellValue('F1', 'Passport');
+    $sheet->setCellValue('G1', 'NRIC/FIN');
+    $sheet->setCellValue('H1', 'Nationality');
+    $sheet->setCellValue('I1', 'Contact Number');
+    $sheet->setCellValue('J1', 'Email');
+    $sheet->setCellValue('K1', 'Service Type');
+    $sheet->setCellValue('L1', 'Test Code/Type');
+    $sheet->setCellValue('M1', 'Specimen Type');
+    $sheet->setCellValue('N1', 'Mode of Payment');
+    $sheet->setCellValue('O1', 'Payment Ref');
+    $sheet->setCellValue('P1', 'Staff Code');
 
     //Create Styles Array
     $styleArray = array(
@@ -64,27 +65,28 @@ function exportToExcel($records) {
   
     $writer = new Xlsx($spreadsheet);
     $rowCount = 2;
-    foreach ($records as $element) {
+    foreach ($records as $key => $element) {
         $dobDate=date_create($element['dob']);
         $testDate=date_create($element['testDate']);
         $testTime=date_create($element['testTime']);
 
         
-        $sheet->setCellValue('A' . $rowCount, date_format($testDate,"d/m/Y"));
-        $sheet->setCellValue('B' . $rowCount, date_format($testTime,"h:i A"));
-        $sheet->setCellValue('C' . $rowCount, $element['testLocation']);
-        $sheet->setCellValue('D' . $rowCount, $element['patientName']);
-        $sheet->setCellValue('E' . $rowCount, $element['passportNumber']);
-        $sheet->setCellValue('F' . $rowCount, $element['nric_fin_number']);
-        $sheet->setCellValue('G' . $rowCount, $element['nationality']);
-        $sheet->setCellValue('H' . $rowCount, $element['contactNumber']);
-        $sheet->setCellValue('I' . $rowCount, $element['email']);
-        $sheet->setCellValue('J' . $rowCount, $element['serviceType']);
-        $sheet->setCellValue('K' . $rowCount, $element['testType']);
-        $sheet->setCellValue('L' . $rowCount, $element['specimenType']);
-        $sheet->setCellValue('M' . $rowCount, $element['paymentMode']);
-        $sheet->setCellValue('N' . $rowCount, $element['paymentRefNo']);
-        $sheet->setCellValue('O' . $rowCount, $element['staffCode']);
+        $sheet->setCellValue('A' . $rowCount, $key+1);
+        $sheet->setCellValue('B' . $rowCount, date_format($testDate,"d/m/Y"));
+        $sheet->setCellValue('C' . $rowCount, date_format($testTime,"h:i A"));
+        $sheet->setCellValue('D' . $rowCount, $element['testLocation']);
+        $sheet->setCellValue('E' . $rowCount, $element['patientName']);
+        $sheet->setCellValue('F' . $rowCount, $element['passportNumber']);
+        $sheet->setCellValue('G' . $rowCount, $element['nric_fin_number']);
+        $sheet->setCellValue('H' . $rowCount, $element['nationality']);
+        $sheet->setCellValue('I' . $rowCount, $element['contactNumber']);
+        $sheet->setCellValue('J' . $rowCount, $element['email']);
+        $sheet->setCellValue('K' . $rowCount, $element['serviceType']);
+        $sheet->setCellValue('L' . $rowCount, $element['testType']);
+        $sheet->setCellValue('M' . $rowCount, $element['specimenType']);
+        $sheet->setCellValue('N' . $rowCount, $element['paymentMode']);
+        $sheet->setCellValue('O' . $rowCount, $element['paymentRefNo']);
+        $sheet->setCellValue('P' . $rowCount, $element['staffCode']);
         $rowCount++;
     }    
         

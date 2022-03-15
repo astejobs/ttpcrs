@@ -17,15 +17,18 @@
   <div class="row">
    <div class="col-sm-12">
        <div class="container-fluid mt-5"> 
-       <p class=" p-2 font-weight-bold text-center">SEARCH REGISTRATIONS</p>
+       <p class=" p-2 font-weight-bold text-center">MANAGE ACCOUNTS</p>
            <div class="row mt-3">
-                <div class="col-sm-10 mt-3">
+                <div class="col-sm-8 mt-3">
                     <div class="form-group">                       
-                        <input type="search" id="searchQuery" placeholder="Search patient name / passport no. / nric / fin" class="form-control btn-search">
+                        <input type="search" id="searchQuery" placeholder="Search Name / username" class="form-control btn-search">
                     </div>                        
                 </div>                    
                 <div class="col-sm-2 form-group mt-3">
                     <button id="mySearchButton" class="btn btn-success btn-block">Search</button>
+                </div>
+                <div class="col-sm-2 form-group mt-3">
+                    <a href="create-user.php" class="btn btn-info btn-block"><i class="fa fa-user-plus pr-2"></i>Add Account</a>
                 </div>
            </div>
        </div>
@@ -48,14 +51,10 @@
                     <thead>
                         <tr>
                             <th class="th-sm">#</th>
-                            <th class="th-sm">Patient Name</th>
-                            <th class="th-sm">D.O.B</th>
-                            <th class="th-sm">Gender</th>
-                            <th class="th-sm">Passport</th>
-                            <th class="th-sm">NRIC_FIN</th>
-                            <th class="th-sm">Test Type</th>
-                            <th class="th-sm">Test Date</th>
-                            <th class="th-sm">Test Time</th>
+                            <th class="th-sm">Name</th>
+                            <th class="th-sm">Position</th>
+                            <th class="th-sm">Site</th>
+                            <th class="th-sm">Role</th>
                             <th class="th-sm">Action</th>
                         </tr>
                     </thead>
@@ -96,44 +95,24 @@ require_once('footer.php');
             searchPlaceholder: "Search records",
             search: "",
             columnDefs: [
-                { orderable: false, targets: 2 },
-                { orderable: false, targets: 7 },
-                { orderable: false, targets: 8 },
-                { orderable: false, targets: 9 }
+                { orderable: false, targets: 5 }
                 ],
-            order: [[1, 'asc']],
+            //order: [[0, 'desc']],
             'processing': true,
             'serverSide': true,
             'serverMethod': 'post',
             'ajax': {
-                'url':'ajaxfile.php'
+                'url':'ajaxfile-users.php'
             },
             'columns': [
                 { data: 'id' },
-                { data: 'patientName' },
-                { data: function (row) { 
-                    if (row.dob == null) return "";
-                    const dob = moment(row.dob).format('DD/MM/YYYY');
-                    return (dob=="Invalid date") ? "" : dob;
-                } },
-                { data: 'gender' },
-                { data: 'passportNumber' },
-                { data: 'nric_fin_number' },
-                { data: 'testType' },
-                { data: function (row) {
-                    if (row.testDate == null) return "";
-                    const td = moment(row.testDate).format('DD/MM/YYYY');
-                    return (td=="Invalid date") ? "" : td;
-                } },
-                { data: function (row) {
-                    if (row.testTime == null) return "";
-                    const tt = moment(row.testTime, 'hh:mm A');
-                    return moment(tt).format('LT');
-                } },
+                { data: 'name' },
+                { data: 'position' },
+                { data: 'site' },
+                { data: 'role' },
                 { data: function ( row, type, set ) {
                     <?php if(isset($_SESSION['ID'])) { ?>
-                        return `<a href="print-label.php?id=${row.id}" data-toggle="tooltip" title="Print Label"><i class="fa fa-clipboard" style="color:#1bb1dc"></i></a>`+
-                            `<a href="edit-registration.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
+                        return `<a href="edit-user.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
                             `<a style="cursor:pointer" class="remove"  id="${row.id}" data-toggle="tooltip" title="Delete"><i class="fa fa-trash" style="color:#1bb1dc"></i></a>`;
                     <?php } else {?>
                         return "";
@@ -158,7 +137,7 @@ require_once('footer.php');
             if(confirm('Are you sure to remove this registration ?'))
             {
                 $.ajax({
-                    url: 'delete_record.php',
+                    url: 'delete_record.php?delete=user',
                     type: 'POST',
                     data: {id: id},
                     error: function() {

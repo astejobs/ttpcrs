@@ -48,7 +48,7 @@
         <ul>
           <li class="m1" label="Home"><a href="register-form.php">Register</a></li>
           
-          <?php if( $_SESSION['ROLE']=='SUPERVISOR' || $_SESSION['ROLE']=='ADMIN') { ?>
+          <?php if( $_SESSION['ROLE']=='SUPERVISOR' || $_SESSION['ROLE']=='ADMIN' || $_SESSION['ROLE']=='MANAGER' || $_SESSION['ROLE']=='EXECUTIVE') { ?>
             <li class="drop-down m1" label="Contact"><a href="#">Reports</a>  
               <ul>
                 <li><a href="reports.php">Past Attendance</a></li>           
@@ -56,7 +56,7 @@
             </li> 
           <?php } ?>  
 
-          <?php if( $_SESSION['ROLE']=='USER' || $_SESSION['ROLE']=='SUPERVISOR' || $_SESSION['ROLE']=='ADMIN') { ?>
+          <?php if( $_SESSION['ROLE']=='USER' || $_SESSION['ROLE']=='SUPERVISOR' || $_SESSION['ROLE']=='ADMIN' || $_SESSION['ROLE']=='MANAGER' || $_SESSION['ROLE']=='EXECUTIVE') { ?>
             <li class="drop-down m1" label="Contact"><a href="">Query</a>  
               <ul>
                 <li><a href="registrations.php">Search Dbase</a></li>           
@@ -74,13 +74,11 @@
               </li>  -->
             <?php } ?>
 
-            <?php if($_SESSION['ROLE']=='ADMIN') { ?>
+            <?php if( $_SESSION['ROLE']=='ADMIN' || $_SESSION['ROLE']=='MANAGER') { ?>
               <li class="drop-down m1" label="Contact"><a href="">Account</a>  
-                <ul>
-                  <li><a href="create-user.php">Add User</a></li> 
-                  <!-- <li><a href="create-user.php">Add/Delete Accounts</a></li> --> 
-                  <!-- <li><a href="dummy.php">Edit/Delete User</a></li> -->           
-                  <!-- <li><a href="dummy.php">Edit/Delete Entries</a></li>   -->         
+                <ul> 
+                  <li><a href="users.php">Add/Delete Accounts</a></li>           
+                  <li><a href="edit-entries.php">Edit/Delete Entries</a></li>           
                   <li><a href="password-change.php">Change Password</a></li>           
                 </ul>
               </li>             

@@ -35,7 +35,7 @@
   
   <script src="assets/vendor/jquery/jquery.min.js"></script>
 </head>
-<body style="background:url(https://bvimrcampus.com/Assets/img/login-bg.png)">
+<body style="background:url('assets/img/login-bg.png')">
 	
 <?php
 /* require_once('header.php'); */

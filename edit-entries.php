@@ -17,7 +17,7 @@
   <div class="row">
    <div class="col-sm-12">
        <div class="container-fluid mt-5"> 
-       <p class=" p-2 font-weight-bold text-center">SEARCH REGISTRATIONS</p>
+       <p class=" p-2 font-weight-bold text-center">EDIT/DELETE ENTRIES</p>
            <div class="row mt-3">
                 <div class="col-sm-10 mt-3">
                     <div class="form-group">                       
@@ -64,7 +64,7 @@
         </div>                              
         <div class="form-group float-right mt-3">
             <?php if(isset($_SESSION['ID'])) { ?>
-                <!-- <form action="generate-excel.php" method="POST">
+               <!--  <form action="generate-excel.php" method="POST">
                     <button type="submit" id="export" class="btn btn-dark px-5" name="export-to-excel">Export All</button>
                 </form> -->
             <?php } ?>
@@ -91,7 +91,7 @@ require_once('footer.php');
     $(document).ready(function() {
         
         var table = $('#myTable').DataTable({
-            "lengthMenu": [ 5, 10 ],
+            "lengthMenu": [10,20 ],
             responsive: true,
             searchPlaceholder: "Search records",
             search: "",
@@ -131,9 +131,8 @@ require_once('footer.php');
                     return moment(tt).format('LT');
                 } },
                 { data: function ( row, type, set ) {
-                    <?php if(isset($_SESSION['ID'])) { ?>
-                        return `<a href="print-label.php?id=${row.id}" data-toggle="tooltip" title="Print Label"><i class="fa fa-clipboard" style="color:#1bb1dc"></i></a>`+
-                            `<a href="edit-registration.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
+                    <?php if( $_SESSION['ROLE']=='ADMIN' || $_SESSION['ROLE']=='MANAGER' ) { ?>
+                        return  `<a href="edit-registration.php?id=${row.id}" class="mx-1" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square" style="color:#1bb1dc"></i></a>`+
                             `<a style="cursor:pointer" class="remove"  id="${row.id}" data-toggle="tooltip" title="Delete"><i class="fa fa-trash" style="color:#1bb1dc"></i></a>`;
                     <?php } else {?>
                         return "";

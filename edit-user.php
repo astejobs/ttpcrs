@@ -6,6 +6,20 @@
       header('location:login.php');
       exit;
     } */
+
+    if(isset($_GET['id'])){
+      if(empty($_GET['id'])) 
+      {
+        header('location:users.php');
+      }else {
+          $id = $_GET['id'];
+          $sql = "SELECT * FROM users WHERE id='".$id."'";        
+          $result = $conn->query($sql);
+          if (mysqli_num_rows($result)) {            
+            $row = $result->fetch_assoc();
+          }
+      }
+  
 ?>
 
 <section id="main-section " class="clearfix">
@@ -18,7 +32,7 @@
 <div class="container mt-5">
       <div class="col-sm-12 pt-4">                    
          
-         <p class=" p-2 bg-dark text-white font-weight-bold text-center">ADD USER</p>
+         <p class=" p-2 bg-dark text-white font-weight-bold text-center">MODIFY USER</p>
                   <div class='alert alert-success d-none del-msg'><strong>User Deleted Successfully!</strong>
                     <button class='close' data-dismiss='alert'>&times;</button>
                   </div>
@@ -28,11 +42,11 @@
                   <div class="row">
                       <div class="col-sm-12">
                           <?php
-                              if(isset($_SESSION['success'])) 
+                              if(isset($_SESSION['msg'])) 
                               { 
-                                  echo "<div class='alert alert-success'><strong>".$_SESSION['success']."</strong> !";
+                                  echo "<div class='alert alert-success'><strong>".$_SESSION['msg']."</strong> !";
                                   echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
-                                  unset($_SESSION['success']);
+                                  unset($_SESSION['msg']);
                               }
                               if(isset($_SESSION['error'])) 
                               { 
@@ -50,26 +64,27 @@
                       </div>
                      
                         <div class="col-md-6 form-group">
+                              <input type="hidden" class="form-control" name="id" value="<?php echo $row['id'] ?>"/>
                               <label> <b>Name </b> <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control" required name="name" value="" placeholder="Name" />                                        
+                              <input type="text" class="form-control" required name="name" value="<?php echo $row['name'] ?>" placeholder="Name" />                                        
                         </div>
 
                                                                                   
-                        <div class="col-md-6 form-group">
+                        <!-- <div class="col-md-6 form-group">
                           <label> <b>Username </b> <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" required name="username" placeholder="Username" />
-                        </div> 
+                        </div>  -->
 
                         
                         <div class="col-md-6 form-group">
                           <label> <b>Position </b> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" required id="position" name="position" placeholder="Position" />
+                          <input type="text" class="form-control" required id="position" name="position" value="<?php echo $row['position'] ?>" placeholder="Position" />
                         </div>
 
                         
                         <div class="col-md-6 form-group">
                           <label> <b>Site </b> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" required id="site" name="site" placeholder="Site" />
+                          <input type="text" class="form-control" required id="site" name="site" value="<?php echo $row['site'] ?>" placeholder="Site" />
                         </div>
 
                         <div class="col-md-6 form-group">
@@ -77,26 +92,26 @@
                           <select class="form-control" name="role" required>
                               <!-- <option value="Please Select">Please Select</option> -->
                               <?php if( $_SESSION['ROLE']=='MANAGER' || $_SESSION['ROLE']=='ADMIN') { ?>
-                                <option value="USER">USER</option>
-                                <option value="SUPERVISOR">EXECUTIVE</option>
+                                <option value="USER"<?=$row['role'] == 'USER' ? ' selected="selected"' : '';?>>USER</option>
+                                <option value="EXECUTIVE"<?=$row['role'] == 'EXECUTIVE' ? ' selected="selected"' : '';?>>EXECUTIVE</option>
                               <?php } ?>
                               <?php if( $_SESSION['ROLE']=='ADMIN') { ?>
-                                <option value="SUPERVISOR">SUPERVISOR</option>
-                                <option value="SUPERVISOR">MANAGER</option>
+                                <option value="SUPERVISOR"<?=$row['role'] == 'SUPERVISOR' ? ' selected="selected"' : '';?>>SUPERVISOR</option>
+                                <option value="MANAGER"<?=$row['role'] == 'MANAGER' ? ' selected="selected"' : '';?>>MANAGER</option>
                               <?php } ?>
                           </select>
                         </div>
 
                         
-                        <div class="col-md-6 form-group">
+                      <!--   <div class="col-md-6 form-group">
                           <label> <b>Password </b> <span class="text-danger">*</span></label>
                           <input type="password" class="form-control" required id="password" name="password" placeholder="Password" />
-                        </div> 
+                        </div>  -->
 
-                        <div class="col-md-6 form-group">
+                       <!--  <div class="col-md-6 form-group">
                           <label> <b>Confirm Password </b> <span class="text-danger">*</span></label>
                           <input type="password" class="form-control" required id="confirmPassword" name="confirmPassword" placeholder="confirmPassword" />
-                        </div>                 
+                        </div>   -->               
 
                         <div class="col-md-6 form-group ">
                             <label>                                
@@ -108,7 +123,7 @@
                                 </small>
                             </label>
                             <br>
-                            <input type="submit" id="submit" name="submit" onSubmit="validate()" class="btn btn-info btn-block mb-5" value="Add User">
+                            <input type="submit" id="submit" name="updateUser" onSubmit="validate()" class="btn btn-info btn-block mb-5" value="Update User">
                         </div> 
                    </div>
             </form>     
@@ -204,4 +219,5 @@ require_once('footer.php');
       $_SERVER['REQUEST_URI']
     );
   } */
+}
 ?>

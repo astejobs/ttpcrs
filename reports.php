@@ -57,7 +57,7 @@
   <div class="row">
    <div class="col-sm-12">
        <div class="container-fluid mt-5"> 
-       <p class=" p-2 font-weight-bold text-center">GENERATE REPORTS</p>
+       <p class=" p-2 font-weight-bold text-center">Past Attendance Reports </p>
            <?php if(isset($_SESSION['ID'])) { ?>
                <form action="reports.php" method="POST">
                     <div class="row mt-3">
@@ -138,15 +138,21 @@
                     <thead>
                         <tr>
                             <th class="th-sm">#</th>
-                            <th class="th-sm">Patient Name</th>
-                            <th class="th-sm">D.O.B</th>
-                            <th class="th-sm">Gender</th>
-                            <th class="th-sm">Passport</th>
-                            <th class="th-sm">NRIC_FIN</th>
-                            <th class="th-sm">Test Type</th>
-                            <th class="th-sm">Test Date</th>
-                            <th class="th-sm">Test Time</th>
+                            <th class="th-sm">Date</th>
+                            <th class="th-sm">Time</th>
                             <th class="th-sm">Test Location</th>
+                            <th class="th-sm">Name</th>
+                            <th class="th-sm">Passport</th>
+                            <th class="th-sm">NRIC/FIN</th>
+                            <th class="th-sm">Nationality</th>
+                            <th class="th-sm">Contact Number</th>
+                            <th class="th-sm">Email</th>
+                            <th class="th-sm">Service Type</th>
+                            <th class="th-sm">Test Code/Type</th>
+                            <th class="th-sm">Specimen Type</th>
+                            <th class="th-sm">Mode of Payment</th>
+                            <th class="th-sm">Payment Ref</th>
+                            <th class="th-sm">Staff Code</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -164,17 +170,6 @@
                         ?> 
                         <tr>
                             <td><?php echo $idx ?></td>
-                            <td><?php echo $row["patientName"] ?></td>
-                            <td>
-                                <?php
-                                    $tdate=date_create($row['dob']);
-                                    echo date_format($tdate,"d/m/Y");
-                                ?>
-                            </td>
-                            <td><?php echo $row["gender"] ?></td>
-                            <td><?php echo $row["passportNumber"] ?></td>
-                            <td><?php echo $row["nric_fin_number"] ?></td>
-                            <td><?php echo $row["testType"] ?></td>
                             <td>
                                 <?php
                                     $tdate=date_create($row['testDate']);
@@ -190,6 +185,18 @@
                             <td>
                                 <?php echo $row["testLocation"]; ?>
                             </td>
+                            <td><?php echo $row["patientName"] ?></td>
+                            <td><?php echo $row["passportNumber"] ?></td>
+                            <td><?php echo $row["nric_fin_number"] ?></td>                            
+                            <td><?php echo $row["nationality"] ?></td>
+                            <td><?php echo $row["contactNumber"] ?></td>
+                            <td><?php echo $row["email"] ?></td>
+                            <td><?php echo $row["serviceType"] ?></td>
+                            <td><?php echo $row["testType"] ?></td>
+                            <td><?php echo $row["specimenType"] ?></td>
+                            <td><?php echo $row["paymentMode"] ?></td>
+                            <td><?php echo $row["paymentRefNo"] ?></td>
+                            <td><?php echo $row["staffCode"] ?></td>
                         </tr>
                         <?php
                             $idx++;

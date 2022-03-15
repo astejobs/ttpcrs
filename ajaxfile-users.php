@@ -16,38 +16,33 @@ $searchValue = mysqli_real_escape_string($conn,$_POST['search']['value']); // Se
 ## Search 
 $searchQuery = " ";
 if($searchValue != ''){
-   $searchQuery = " and (patientName like '%".$searchValue."%' or 
-        passportNumber like '%".$searchValue."%' or 
-        nric_fin_number like'%".$searchValue."%' ) ";
+   $searchQuery = " and (username like '%".$searchValue."%' or 
+        name like '%".$searchValue."%' ) ";
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($conn,"select count(*) as allcount from registrations");
+$sel = mysqli_query($conn,"select count(*) as allcount from users");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of record with filtering
-$sel = mysqli_query($conn,"select count(*) as allcount from registrations WHERE 1 ".$searchQuery);
+$sel = mysqli_query($conn,"select count(*) as allcount from users WHERE 1 ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$empQuery = "select * from registrations WHERE 1 ".$searchQuery." order by created DESC, ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
-$empRecords = mysqli_query($conn, $empQuery);
+$userQuery = "select * from users WHERE 1 ".$searchQuery." order by created DESC, ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$userRecords = mysqli_query($conn, $userQuery);
 $data = array();
 
 $index=1;
-while ($row = mysqli_fetch_assoc($empRecords)) { 
+while ($row = mysqli_fetch_assoc($userRecords)) {
    $data[] = array( 
       "id"=>$index,
-      "patientName"=>$row['patientName'],
-      "dob"=>$row['dob'],
-      "gender"=>$row['gender'],
-      "nric_fin_number"=>$row['nric_fin_number'],
-      "passportNumber"=>$row['passportNumber'],
-      "testDate"=>$row['testDate'],
-      "testTime"=>$row['testTime'],
-      "testType"=>$row['testType']
+      "name"=>$row['name'],
+      "position"=>$row['position'],
+      "site"=>$row['site'],
+      "role"=>$row['role']
    );
    $index++;
 }
