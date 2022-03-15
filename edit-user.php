@@ -70,10 +70,10 @@
                         </div>
 
                                                                                   
-                        <!-- <div class="col-md-6 form-group">
+                        <div class="col-md-6 form-group">
                           <label> <b>Username </b> <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" required name="username" placeholder="Username" />
-                        </div>  -->
+                          <input type="text" class="form-control" required name="username" value="<?php echo $row['username'] ?>" placeholder="Username" />
+                        </div> 
 
                         
                         <div class="col-md-6 form-group">

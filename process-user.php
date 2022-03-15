@@ -27,7 +27,7 @@ if(isset($_POST['updateUser'])){
   if(isset($_POST['id'])) { echo "in edit";
       $id = $_POST['id'];
       // receive all input values from the form
-      //$username = mysqli_real_escape_string($conn, $_POST['username']);
+      $username = mysqli_real_escape_string($conn, $_POST['username']);
       $name = mysqli_real_escape_string($conn, $_POST['name']);
       //$password_1 = mysqli_real_escape_string($conn, $_POST['password']);
       //$password_2 = mysqli_real_escape_string($conn, $_POST['confirmPassword']);
@@ -37,7 +37,7 @@ if(isset($_POST['updateUser'])){
 
       // form validation: ensure that the form is correctly filled ...
       // by adding (array_push()) corresponding error unto $errors array
-      //if (empty($username)) { array_push($errors, "Username is required"); }
+      if (empty($username)) { array_push($errors, "Username is required"); }
       if (empty($name)) { array_push($errors, "Name is required"); }
       if (empty($site)) { array_push($errors, "Site is required"); }
       if (empty($position)) { array_push($errors, "Position is required"); }
@@ -49,7 +49,8 @@ if(isset($_POST['updateUser'])){
       if (count($errors) == 0) { 
         //$pwd1 = password_hash($password_1, PASSWORD_BCRYPT); //encrypt the password before saving in the database
         
-        $sql = "UPDATE users SET name='$name', 
+        $sql = "UPDATE users SET username='$username',
+                                  name='$name', 
                                   role='$role', 
                                   position='$position', 
                                   site='$site' WHERE id='$id'";

@@ -36,10 +36,11 @@ $empQuery = "select * from registrations WHERE 1 ".$searchQuery." order by creat
 $empRecords = mysqli_query($conn, $empQuery);
 $data = array();
 
-$index=1;
+$index=$row+1;
 while ($row = mysqli_fetch_assoc($empRecords)) { 
    $data[] = array( 
-      "id"=>$index,
+      "username"=>$index,
+      "id"=>$row['id'],
       "patientName"=>$row['patientName'],
       "dob"=>$row['dob'],
       "gender"=>$row['gender'],

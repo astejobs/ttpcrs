@@ -109,7 +109,7 @@ require_once('footer.php');
                 'url':'ajaxfile.php'
             },
             'columns': [
-                { data: 'id' },
+                { data: 'username' },
                 { data: 'patientName' },
                 { data: function (row) { 
                     if (row.dob == null) return "";

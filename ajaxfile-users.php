@@ -21,28 +21,29 @@ if($searchValue != ''){
 }
 
 ## Total number of records without filtering
-$sel = mysqli_query($conn,"select count(*) as allcount from users");
+$sel = mysqli_query($conn,"select count(*) as allcount from users WHERE role != 'ADMIN'");
 $records = mysqli_fetch_assoc($sel);
 $totalRecords = $records['allcount'];
 
 ## Total number of record with filtering
-$sel = mysqli_query($conn,"select count(*) as allcount from users WHERE 1 ".$searchQuery);
+$sel = mysqli_query($conn,"select count(*) as allcount from users WHERE 1 AND role != 'ADMIN' ".$searchQuery);
 $records = mysqli_fetch_assoc($sel);
 $totalRecordwithFilter = $records['allcount'];
 
 ## Fetch records
-$userQuery = "select * from users WHERE 1 ".$searchQuery." order by created DESC, ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
+$userQuery = "select * from users WHERE 1 AND role != 'ADMIN' ".$searchQuery." order by created DESC, ".$columnName." ".$columnSortOrder." limit ".$row.",".$rowperpage;
 $userRecords = mysqli_query($conn, $userQuery);
 $data = array();
 
-$index=1;
+$index=$row+1;
 while ($row = mysqli_fetch_assoc($userRecords)) {
    $data[] = array( 
-      "id"=>$index,
+      "username"=>$index,
       "name"=>$row['name'],
       "position"=>$row['position'],
       "site"=>$row['site'],
-      "role"=>$row['role']
+      "role"=>$row['role'],
+      "id"=>$row['id']
    );
    $index++;
 }
