@@ -139,6 +139,7 @@
                     <!-- <option selected>Please Select </option> -->
                     <option value="PDT / PCR" <?=$row['testType'] == 'PDT / PCR' ? ' selected="selected"' : '';?>>PDT / PCR</option>
                     <option value="PDT / SERO" <?=$row['testType'] == 'PDT / SERO' ? ' selected="selected"' : '';?>>PDT / SERO</option>
+                    <option value="VOLUNTARY TEST" <?=$row['testType'] == 'VOLUNTARY TEST' ? ' selected="selected"' : '';?>>VOLUNTARY TEST</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
@@ -210,7 +211,10 @@
                     <option value="BP"<?=$row['testLocation'] == 'BP' ? ' selected="selected"' : '';?>>BP</option>
                     <option value="WD"<?=$row['testLocation'] == 'WP' ? ' selected="selected"' : '';?>>WP</option>
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
-                    <option value="GM"<?=$row['testLocation'] == 'MER' ? ' selected="selected"' : '';?>>MER</option>
+                    <option value="ROXY"<?=$row['testLocation'] == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
+                    <option value="CQC"<?=$row['testLocation'] == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
+                    <option value="MTS"<?=$row['testLocation'] == 'MTS' ? ' selected="selected"' : '';?>>MTS</option>
+                    <option value="SPEC"<?=$row['testLocation'] == 'SPEC' ? ' selected="selected"' : '';?>>SPEC</option>
                 </select>
             </div>
             <div class="col-md-12 form-group">

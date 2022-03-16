@@ -105,7 +105,7 @@
                     <!-- <input type="tel" class="form-control input-sm" name="contactNumber" placeholder="Phone Number" data-error="Enter Your Phone Number"
                         required pattern="\+?\d[\d -]{8,12}\d"> -->
                     </div>
-                    <small >(with 3 digit country code. SG = 065)</small>
+                    <!-- <small >(with 3 digit country code. SG = 065)</small> -->
             </div>
             <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Email Address </b><span class="text-danger">*</span> </label>
@@ -127,6 +127,7 @@
                     <option value="Please Select">Please Select</option>
                     <option value="PDT / PCR">PDT / PCR</option>
                     <option value="PDT / SERO">PDT / SERO</option>
+                    <option value="PDT / SERO">VOLUNTARY TEST</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
