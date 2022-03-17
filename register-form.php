@@ -127,7 +127,7 @@
                     <option value="Please Select">Please Select</option>
                     <option value="PDT / PCR">PDT / PCR</option>
                     <option value="PDT / SERO">PDT / SERO</option>
-                    <option value="PDT / SERO">VOLUNTARY TEST</option>
+                    <option value="VOLUNTARY TEST">VOLUNTARY TEST</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
