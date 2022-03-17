@@ -2,6 +2,9 @@
 require_once('connection.php');
 
   require_once('header.php');
+  if(!isset($_SESSION['ID'])) {
+    header('location:login.php');
+  }
 ?>
 
 <style>
@@ -27,7 +30,7 @@ require_once('connection.php');
     width:189px;
     height: 129px;
     font-size:9px !important;
-    /* font-weight: 600; */   
+    font-weight: 600;   
     /* border:1px solid red;   */  
   }
 </style>
@@ -85,7 +88,7 @@ if(isset($_GET['id'])) {
                             body { margin: 10px; }
                           }
                         </style>
-                      <table class="table-sm table-borderless lbl table-light" id="labelToPrint1">
+                      <table class="table-sm table-borderless lbl table-light" id="labelToPrint1" style="font-weight:600">
                           <tr>
                             <td>
                                 <?php
@@ -229,7 +232,7 @@ function printDiv()
   var labelToPrint=document.getElementById('labelToPrint');
   var newWin=window.open('','Print-Window');
   newWin.document.open();
-  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:9px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:9px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:normal}@page { margin: 0; size: 189px 129px; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
+  newWin.document.write('<html><head><style>@media print{.table{width:189px;height: 129px;font-size:9px !important;padding: 0px !important;} .lbl {width:189px;height: 129px;font-size:9px !important;}.table-sm td, .table-sm th {padding: 0px !important;font-weight:700}@page { margin: 0; size: 189px 129px; }body { margin: 10px; }}</style></head><body onload="window.print()">'+labelToPrint.innerHTML+'</body></html>');
   newWin.document.close();
   setTimeout(function(){newWin.close();},100);
 }

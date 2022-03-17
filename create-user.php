@@ -79,8 +79,8 @@
                               <?php if( $_SESSION['ROLE']=='MANAGER' || $_SESSION['ROLE']=='ADMIN') { ?>
                                 <option value="USER">USER</option>
                                 <option value="SUPERVISOR">EXECUTIVE</option>
-                              <?php } ?>
-                              <?php if( $_SESSION['ROLE']=='ADMIN') { ?>
+                              <?php //} ?>
+                              <?php //if( $_SESSION['ROLE']=='ADMIN') { ?>
                                 <option value="SUPERVISOR">SUPERVISOR</option>
                                 <option value="SUPERVISOR">MANAGER</option>
                               <?php } ?>
