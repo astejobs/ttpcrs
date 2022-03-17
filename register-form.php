@@ -166,7 +166,7 @@
                     <input class="form-control"  id="test_date"type="text" name="testDate" placeholder="DD/MM/YYYY" required>
                   </div>
                   <div class="col-sm-6 form-group">                    
-                    <input class="form-control timepicker"  id="test_date" type="text" name="testTime" placeholder="HH:MM AM/PM" required>
+                    <input class="form-control timepicker"  id="test_time" type="text" name="testTime" placeholder="HH:MM AM/PM" required>
                   </div>
               </div>
             </div>
@@ -286,24 +286,34 @@
           altFormat: "d/m/Y",
           altInput: true,
       }
+      <?php 
+        $tz = 'Asia/Singapore';
+        $tz_obj = new DateTimeZone($tz);
+        $today = new DateTime("now", $tz_obj);
+        $today_formatted = $today->format('Y-m-d');
+        //$time_formatted = $today->format('h:i A');
+        $time_formatted = date_format($today,"h:i A")
+      ?>
       optional_config_td = {
           maxDate: "today",
           dateFormat: "Y-m-d",
           altFormat: "d/m/Y",
           altInput: true,
-          defaultDate: "today",
+          clickOpens: false,
+          defaultDate: "<?php echo $today_formatted ?>",
       }
-
+console.log("<?php echo $time_formatted ?>")
       const d = new Date();
       let minutes = d.getMinutes();
       let hour = d.getHours();
       time_config = {
         enableTime: true,
         noCalendar: true,
-        dateFormat: "H:i",
+        dateFormat: "H:i K",
         altFormat: "h:i K",
         altInput: true,
-        defaultDate: new Date(),
+        clickOpens: false,
+        defaultDate: "<?php echo $time_formatted ?>",//new Date(),
       }
       $("#dob_date").flatpickr(optional_config_dob);
       $("#test_date").flatpickr(optional_config_td);
