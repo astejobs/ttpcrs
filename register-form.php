@@ -312,7 +312,7 @@ console.log("<?php echo $time_formatted ?>")
         dateFormat: "H:i K",
         altFormat: "h:i K",
         altInput: true,
-        clickOpens: false,
+        clickOpens: true,
         defaultDate: "<?php echo $time_formatted ?>",//new Date(),
       }
       $("#dob_date").flatpickr(optional_config_dob);
