@@ -1,15 +1,27 @@
 <?php 
-session_start();
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+  date_default_timezone_set('Asia/Singapore');
+  session_start();
+  ini_set('display_errors',1);
+  error_reporting(E_ALL);
 
-/*** THIS! ***/
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-/*** ^^^^^ ***/
+  /*** THIS! ***/
+  mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+  /*** ^^^^^ ***/
+  if(!isset($_SESSION['ID'])) {
+    header("location:login.php");
+    exit;
+  }
+  if(isset($_SESSION['ID'])) {
+    $now = time();
+    if($now > $_SESSION['expire']) {
+        header("location:login.php?sessionExpired=true");
+        exit;
+    }
+  }
 
-require_once('connection.php');
-//Update Existing Record 
-if(isset($_GET['update'])){
+  require_once('connection.php');
+  //Update Existing Record 
+  if(isset($_GET['update'])){
 
   if(isset($_POST['id'])){ 
     $id = $_POST['id'];

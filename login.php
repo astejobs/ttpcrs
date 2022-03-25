@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); date_default_timezone_set('Asia/Singapore'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,6 +77,8 @@ if(isset($_POST['login'])) {
 						$_SESSION['ID'] = $userRow['id'];
 						$_SESSION['ROLE'] = $userRow['role'];
 						$_SESSION['NAME'] = $userRow['name'];
+						$_SESSION['start'] = time();
+						$_SESSION['expire'] = $_SESSION['start']+(3*60*60);  //3 hours
 						return password_verify($password, $userRow['password']);
 					} 					
 				}
@@ -118,6 +120,11 @@ if(isset($_POST['login'])) {
 						echo "<div class='alert alert-danger'><strong>".$_SESSION['invalidlogindetails']."</strong> !";
 						echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
 						unset($_SESSION['invalidlogindetails']);
+					}
+					if(isset($_GET['sessionExpired'])) {
+						echo "<div class='alert alert-danger'><strong>Session Expored, Please login</strong> !";
+						echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
+						session_destroy();
 					}
 				?>
 			</div>

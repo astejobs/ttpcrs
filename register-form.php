@@ -1,7 +1,23 @@
 <?php
+  date_default_timezone_set('Asia/Singapore');
+    $tz = 'Asia/Singapore';
+    $tz_obj = new DateTimeZone($tz);
+    $today = new DateTime("now", $tz_obj);
+    $today_formatted = $today->format('Y-m-d');
   require_once('header.php');
   require_once('countries.php');
   $activePage = "Home";
+  if(!isset($_SESSION['ID'])) {
+      header("location:login.php");
+      exit;
+  }
+  if(isset($_SESSION['ID'])) {
+    $now = time();
+    if($now > $_SESSION['expire']) {
+        header("location:login.php?sessionExpired=true");
+        exit;
+    }
+  }
 ?>
 <style>
     .iti { width: 100%; }
@@ -23,7 +39,7 @@
             
             <div class="col-md-12 form-group">
                 <div class="col-sm-12">
-                    <?php
+                    <?php 
                         if(isset($_SESSION['msg'])) 
                         { 
                             echo "<div class='alert alert-danger'><strong>".$_SESSION['msg']."</strong> !";
@@ -163,7 +179,7 @@
               </div>
               <div class="row">
                   <div class="col-sm-6 form-group">                    
-                    <input class="form-control"  id="test_date"type="text" name="testDate" placeholder="DD/MM/YYYY" required>
+                    <input class="form-control"  id="test_datet" type="text" name="testDate" placeholder="DD/MM/YYYY" required readonly value="<?php echo $today_formatted ?>" >
                   </div>
                   <div class="col-sm-6 form-group">                    
                     <input class="form-control timepicker"  id="test_time" type="text" name="testTime" placeholder="HH:MM AM/PM" required>
@@ -290,19 +306,20 @@
         $tz = 'Asia/Singapore';
         $tz_obj = new DateTimeZone($tz);
         $today = new DateTime("now", $tz_obj);
-        $today_formatted = $today->format('Y-m-d');
+        $today_formatted = $today->format('d-m-Y');
         //$time_formatted = $today->format('h:i A');
         $time_formatted = date_format($today,"h:i A")
       ?>
+      var tdy = "<?php echo $today_formatted ?>";console.log(tdy);
       optional_config_td = {
-          maxDate: "today",
+          defaultDate: tdy,
+          maxDate: new Date().fp_incr(1),
           dateFormat: "Y-m-d",
           altFormat: "d/m/Y",
           altInput: true,
           clickOpens: false,
-          defaultDate: "<?php echo $today_formatted ?>",
       }
-console.log("<?php echo $time_formatted ?>")
+console.log("<?php echo $today_formatted ?>")
       const d = new Date();
       let minutes = d.getMinutes();
       let hour = d.getHours();
@@ -313,7 +330,7 @@ console.log("<?php echo $time_formatted ?>")
         altFormat: "h:i K",
         altInput: true,
         clickOpens: false,
-        defaultDate: "<?php echo $time_formatted ?>",//new Date(),
+        defaultDate: "<?php echo $time_formatted ?>"
       }
       $("#dob_date").flatpickr(optional_config_dob);
       $("#test_date").flatpickr(optional_config_td);

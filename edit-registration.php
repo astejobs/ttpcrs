@@ -304,7 +304,7 @@
           defaultDate: "<?php echo $row['dob'] ?>"
       }
       optional_config_td = {
-          maxDate: "today",
+          maxDate: new Date().fp_incr(1),
           dateFormat: "Y-m-d",
           altFormat: "d/m/Y",
           altInput: true,
