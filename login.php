@@ -101,6 +101,9 @@ if(isset($_POST['login'])) {
 			}		
 		}else{
 			$errorMsg = "Username and Password is required";
+			$_SESSION['invalidlogindetails']=$errorMsg;
+			header("location:login.php");
+			exit;
 		}
 		
 } else {
@@ -112,26 +115,22 @@ if(isset($_POST['login'])) {
 <!-- Body Section -->
 <section id="why-us" class="why-us" style="height:100%">
 	<div class="container-fluid">
+			
 		<div class="row">
-			<div class="row col-sm-12">
-				<?php
+			<div class="card-chart col-sm-4 offset-md-4 p-5 mx-auto" data-aos="slide-down">
+			<?php
 					if(isset($_SESSION['invalidlogindetails'])) 
 					{ 
-						echo "<div class='alert alert-danger'><strong>".$_SESSION['invalidlogindetails']."</strong> !";
+						echo "<div class='alert alert-danger'>".$_SESSION['invalidlogindetails']." !";
 						echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
 						unset($_SESSION['invalidlogindetails']);
 					}
 					if(isset($_GET['sessionExpired'])) {
-						echo "<div class='alert alert-danger'><strong>Session Expored, Please login</strong> !";
+						echo "<div class='alert alert-danger'>Session Expired, Please login !";
 						echo "<button class='close' data-dismiss='alert'>&times;</button></div>";
 						session_destroy();
 					}
 				?>
-			</div>
-		</div>
-	
-		<div class="row">
-			<div class="card-chart col-sm-4 offset-md-4 p-5 mx-auto" data-aos="slide-down">
 				<form action="login.php" method="post">
 					<div class="mb-3">
 						<label for="exampleInputEmail1" class="form-label">Username</label>
