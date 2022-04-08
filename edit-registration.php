@@ -213,7 +213,7 @@
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                     <option value="ROXY"<?=$row['testLocation'] == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                     <option value="CQC"<?=$row['testLocation'] == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
-                    <option value="CQC"<?=$row['testLocation'] == 'IBIS' ? ' selected="selected"' : '';?>>IBIS</option>
+                    <option value="IBIS"<?=$row['testLocation'] == 'IBIS' ? ' selected="selected"' : '';?>>IBIS</option>
                     <option value="MTS"<?=$row['testLocation'] == 'MTS' ? ' selected="selected"' : '';?>>MTS</option>
                     <option value="SPEC"<?=$row['testLocation'] == 'SPEC' ? ' selected="selected"' : '';?>>SPEC</option>
                 </select>
