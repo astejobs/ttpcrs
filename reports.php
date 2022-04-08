@@ -74,6 +74,7 @@
                                     <option value="GM"<?=$site == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                                     <option value="ROXY"<?=$site == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                                     <option value="CQC"<?=$site == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
+                                    <option value="CQC"<?=$site == 'IBIS' ? ' selected="selected"' : '';?>>IBIS</option>
                                     <option value="MTS"<?=$site == 'MTS' ? ' selected="selected"' : '';?>>MTS</option>
                                     <option value="SPEC"<?=$site == 'SPEC' ? ' selected="selected"' : '';?>>SPEC</option>
 
