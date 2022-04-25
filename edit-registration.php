@@ -298,7 +298,7 @@
 		});
 
       optional_config_dob = {
-          maxDate: new Date().setFullYear( new Date().getFullYear() - 1 ),
+          maxDate: new Date(),
           dateFormat: "Y-m-d",
           altFormat: "d/m/Y",
           altInput: true,
