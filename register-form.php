@@ -157,13 +157,13 @@
             </div>
             <div class="col-md-12 form-group">
                 <label for="Patient Name" class="form-label"> <b>Clinic Name and HCI No.</b><span class="text-danger">*</span> </label>
-                <input type="text" class="form-control" name="clinicName" readonly="readonly" value="SAUDARA CLINIC by A+J GENERAL PHYSICIANS (18M0151)"
+                <input type="text" class="form-control" name="clinicName" readonly="readonly" value="SM HANEEFA CLINIC (13C0141)"
                     placeholder="Clinic Name and HCI No" required>
             </div>
 
             <div class="col-md-12 form-group">
                 <label for="Patient Name" class="form-label"> <b>Performing Physician/MCR </b> <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="performing_mcr" readonly="readonly" value="Dr Juliana Bahadin (07961H)" placeholder="Performing Physician/MCR" required>
+                <input type="text" class="form-control" name="performing_mcr" readonly="readonly" value="Dr Sajeena Abdul Azeesu Kunju (08740H)" placeholder="Performing Physician/MCR" required>
             </div>
             <div class="col-md-12 my-3">
               <p class="text-center">
