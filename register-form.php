@@ -122,7 +122,7 @@
                         required pattern="\+?\d[\d -]{8,12}\d"> -->
                     </div>
                     <!-- <small >(with 3 digit country code. SG = 065)</small> -->
-            </div>
+            </div>   
             <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Email Address </b><span class="text-danger">*</span> </label>
                 <input type="email" class="form-control" name="email" placeholder="Enter Email Address"
@@ -134,6 +134,7 @@
                     <option value="Please Select">Please Select</option>
                     <option value="Standard">Standard</option>
                     <option value="Express">Express</option>
+                    <option value="Rapid Express">Rapid Express</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
