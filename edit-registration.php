@@ -206,10 +206,10 @@
                 <select class="form-control" name="testLocation" required>
                     <option selected>Please Select </option>
                     <option value="JE"<?=$row['testLocation'] == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
-                    <option value="CR"<?=$row['testLocation'] == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
+                    <!-- <option value="CR"<?=$row['testLocation'] == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
                     <option value="ML"<?=$row['testLocation'] == 'MAR' ? ' selected="selected"' : '';?>>MAR</option>
                     <option value="BP"<?=$row['testLocation'] == 'BP' ? ' selected="selected"' : '';?>>BP</option>
-                    <option value="WD"<?=$row['testLocation'] == 'WP' ? ' selected="selected"' : '';?>>WP</option>
+                    <option value="WD"<?=$row['testLocation'] == 'WP' ? ' selected="selected"' : '';?>>WP</option> -->
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                     <option value="ROXY"<?=$row['testLocation'] == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                     <option value="CQC"<?=$row['testLocation'] == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
