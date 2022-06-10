@@ -207,7 +207,7 @@
                 <label for="Nationality" class="control-label"> <b>Test Location </b> <span class="text-danger">*</span></label>
                 <select class="form-control" name="testLocation" required>
                     <option selected>Please Select </option>
-                    <option value="JE"<?=$row['testLocation'] == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
+                    <option value="JEC"<?=$row['testLocation'] == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                     <option value="ROXY"<?=$row['testLocation'] == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                     <option value="CQC"<?=$row['testLocation'] == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
