@@ -35,6 +35,7 @@
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $testType = mysqli_real_escape_string($conn, $_POST['testType']);
     $specimenType = mysqli_real_escape_string($conn, $_POST['specimenType']);
+    $serviceType = mysqli_real_escape_string($conn, $_POST['serviceType']);
     $clinicName = mysqli_real_escape_string($conn, $_POST['clinicName']);
     $performing_mcr = mysqli_real_escape_string($conn, $_POST['performing_mcr']);
     $testDate = mysqli_real_escape_string($conn, $_POST['testDate']);
@@ -54,6 +55,7 @@
                                        contactNumber='".$contactNumber."', 
                                        testType='".$testType."', 
                                        specimenType='".$specimenType."', 
+                                       serviceType='".$serviceType."', 
                                        clinicName='".$clinicName."', 
                                        physician_mcr='".$performing_mcr."', 
                                        testDate='".$testDate."', 
