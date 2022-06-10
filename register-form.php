@@ -211,10 +211,10 @@
                 <select class="form-control" name="testLocation" required>
                     <option value="Please Select">Please Select</option>
                     <option value="JEC">JEC</option>
-                    <option value="CIR">CIR</option>
+                    <!-- <option value="CIR">CIR</option>
                     <option value="MAR">MAR</option>
                     <option value="BP">BP</option>
-                    <option value="WP">WP</option>
+                    <option value="WP">WP</option> -->
                     <option value="GM">GM</option>
                     <option value="ROXY">ROXY</option>
                     <option value="CQC">CQC</option>
