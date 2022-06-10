@@ -131,6 +131,7 @@
                     <!-- <option selected>Please Select </option> -->
                     <option value="Standard" <?=$row['serviceType'] == 'Standard' ? ' selected="selected"' : '';?>>Standard</option>
                     <option value="Express" <?=$row['serviceType'] == 'Express' ? ' selected="selected"' : '';?>>Express</option>
+                    <option value="Rapid Express" <?=$row['serviceType'] == 'Rapid Express' ? ' selected="selected"' : '';?>>Rapid Express</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
