@@ -127,18 +127,13 @@
             </div>
             <div class="col-md-6 form-group">
                 <label for="inputEmail" class="control-label"> <b>Service Type </b> </label>
-                <!-- <select class="form-control" name="serviceType" > -->
+                 <select class="form-control" name="serviceType" > 
                     <!-- <option selected>Please Select </option> -->
-                    <!-- <option value="Standard" <?=$row['serviceType'] == 'Standard' ? ' selected="selected"' : '';?>>Standard</option>
+                     <option value="Standard" <?=$row['serviceType'] == 'Standard' ? ' selected="selected"' : '';?>>Standard</option>
                     <option value="Express" <?=$row['serviceType'] == 'Express' ? ' selected="selected"' : '';?>>Express</option>
-                    <option value="Rapid Express" <?=$row['serviceType'] == 'Rapid Express' ? ' selected="selected"' : '';?>>Rapid Express</option> -->
-                <!-- </select> -->
-                <select class="form-control" name="serviceType" >
-                    <!-- <option value="Please Select">Please Select</option> -->
-                    <option value="Standard">Standard</option>
-                    <option value="Express">Express</option>
-                    <option value="Rapid Express">Rapid Express</option>
-                </select>
+                    <option value="Rapid Express" <?=$row['serviceType'] == 'Rapid Express' ? ' selected="selected"' : '';?>>Rapid Express</option> 
+                 </select> 
+               
             </div>
             <div class="col-md-6 form-group">
                 <label for="Patient Name" class="form-label"> <b>Test Code/Type </b></label>
@@ -213,10 +208,6 @@
                 <select class="form-control" name="testLocation" required>
                     <option selected>Please Select </option>
                     <option value="JE"<?=$row['testLocation'] == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
-                    <!-- <option value="CR"<?=$row['testLocation'] == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
-                    <option value="ML"<?=$row['testLocation'] == 'MAR' ? ' selected="selected"' : '';?>>MAR</option>
-                    <option value="BP"<?=$row['testLocation'] == 'BP' ? ' selected="selected"' : '';?>>BP</option>
-                    <option value="WD"<?=$row['testLocation'] == 'WP' ? ' selected="selected"' : '';?>>WP</option> -->
                     <option value="GM"<?=$row['testLocation'] == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                     <option value="ROXY"<?=$row['testLocation'] == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                     <option value="CQC"<?=$row['testLocation'] == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
