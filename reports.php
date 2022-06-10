@@ -67,10 +67,7 @@
                                 <select class="form-control" name="testLocation">
                                     <option>Please Select </option>
                                     <option value="JEC"<?=$site == 'JEC' ? ' selected="selected"' : '';?>>JEC</option>
-                                    <option value="CIR"<?=$site == 'CIR' ? ' selected="selected"' : '';?>>CIR</option>
-                                    <option value="MAR"<?=$site == 'MAR' ? ' selected="selected"' : '';?>>MAR</option>
-                                    <option value="BP"<?=$site == 'BP' ? ' selected="selected"' : '';?>>BP</option>
-                                    <option value="WP"<?=$site == 'WP' ? ' selected="selected"' : '';?>>WP</option>
+                                   
                                     <option value="GM"<?=$site == 'GM' ? ' selected="selected"' : '';?>>GM</option>
                                     <option value="ROXY"<?=$site == 'ROXY' ? ' selected="selected"' : '';?>>ROXY</option>
                                     <option value="CQC"<?=$site == 'CQC' ? ' selected="selected"' : '';?>>CQC</option>
